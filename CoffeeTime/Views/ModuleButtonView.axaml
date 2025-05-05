@@ -16,7 +16,10 @@
             </Grid.ColumnDefinitions>
             
             <!-- Module icon -->
-            <Image HorizontalAlignment="Left" VerticalAlignment="Center"/>
+            <Image Source="{Binding ModuleIcon}"
+                   Margin="0, 0, 16, 0"
+                   Width="32" Height="32"
+                   HorizontalAlignment="Left" VerticalAlignment="Center"/>
             
             <!-- Module dependency icons -->
             <ItemsControl Grid.Column="1"
@@ -25,14 +28,16 @@
                     <ItemsPanelTemplate>
                         <WrapPanel Orientation="Vertical"
                                    HorizontalAlignment="Left" VerticalAlignment="Center"
-                                   Height="64"
-                                   ItemWidth="32" ItemHeight="32"/>
+                                   Height="32"
+                                   ItemWidth="16" ItemHeight="16"
+                                   IsVisible="{Binding IsTitleVisible}"/>
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
                 
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Image Source="{Binding}" Width="32" Height="32"/>
+                        <Image Source="{Binding}"
+                               Width="16" Height="16"/>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>

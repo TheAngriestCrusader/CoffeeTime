@@ -13,15 +13,20 @@ public partial class ModuleButtonViewModel : ViewModelBase
     
     [ObservableProperty] private ObservableCollection<Bitmap> _dependencyIcons = [];
     [ObservableProperty] private bool _isTitleVisible;
+    [ObservableProperty] private Bitmap _moduleIcon;
     [ObservableProperty] private string _title;
 
     private readonly Func<ViewModelBase> _factory;
 
-    public ModuleButtonViewModel(string title, Func<ViewModelBase> factory, MainDisplayState mainDisplay)
+    public ModuleButtonViewModel(string title,
+        Func<ViewModelBase> factory,
+        Bitmap moduleIcon,
+        MainDisplayState mainDisplay)
     {
         Title = title;
         _factory = factory;
         MainDisplay = mainDisplay;
+        ModuleIcon = moduleIcon;
     }
 
     [RelayCommand]

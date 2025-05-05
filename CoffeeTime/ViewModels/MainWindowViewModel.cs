@@ -1,5 +1,7 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 using CoffeeTime.States;
+using CoffeeTime.Utilities;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
@@ -27,10 +29,14 @@ namespace CoffeeTime.ViewModels
             Header.Text = "Coffee Time";
             IsPaneOpen = true;
             MainDisplay.CurrentControl = new SplashScreenViewModel();
-            PaneMinimizedWidth = 32;
+            PaneMinimizedWidth = 48;
             
             // ModuleButtons
-            ModuleButtons.Add(new ModuleButtonViewModel("Test", () => new ViewModelBase(), MainDisplay));
+            ModuleButtons.Add(new ModuleButtonViewModel(
+                "Path Watcher",
+                () => new ViewModelBase(),
+                Converter.AvaresToBitmap("avares://CoffeeTime/Assets/PathWatcherIcon.png"),
+                MainDisplay));
             UpdatePaneWidgets();
         }
 
