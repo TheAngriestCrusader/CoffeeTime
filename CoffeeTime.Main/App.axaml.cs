@@ -2,7 +2,6 @@ using System;
 using System.Linq;
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
-using Avalonia.Data.Core;
 using Avalonia.Data.Core.Plugins;
 using Avalonia.Markup.Xaml;
 using CoffeeTime.Main.ViewModels;
@@ -11,10 +10,10 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace CoffeeTime.Main
 {
-    public partial class App : Application
+    public class App : Application
     {
         private static IServiceProvider? _services;
-        public static IServiceProvider Services =>
+        private static IServiceProvider Services =>
             _services ?? throw new InvalidOperationException("Services has not been initialized.");
 
         public override void Initialize()
@@ -41,7 +40,7 @@ namespace CoffeeTime.Main
             base.OnFrameworkInitializationCompleted();
         }
 
-        private void DisableAvaloniaDataAnnotationValidation()
+        private static void DisableAvaloniaDataAnnotationValidation()
         {
             // Get an array of plugins to remove
             var dataValidationPluginsToRemove =
