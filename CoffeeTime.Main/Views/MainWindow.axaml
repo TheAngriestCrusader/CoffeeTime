@@ -17,7 +17,19 @@
     </Design.DataContext>
 
 	<StackPanel Orientation="Vertical">
-		<TextBlock Text="{Binding HeaderText}"/>
+		<TextBlock Text="{Binding HeaderText}" TextAlignment="Center"/>
+		
+		<Separator/>
+		
+		<SplitView DisplayMode="CompactInline" IsPaneOpen="{Binding IsPaneOpen}">
+			<SplitView.Pane>
+				<Button Content="☰" Command="{Binding TogglePaneCommand}"/>
+			</SplitView.Pane>
+			
+			<SplitView.Content>
+				CONTENT
+			</SplitView.Content>
+		</SplitView>
 	</StackPanel>
 
 </Window>
