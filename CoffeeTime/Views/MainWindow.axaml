@@ -23,7 +23,8 @@
 		</Grid.RowDefinitions>
 		
 		<TextBlock Grid.Row="0"
-		           Text="{Binding Header.Text}" TextAlignment="Center"/>
+		           Text="{Binding Header.Text}" TextAlignment="Center"
+		           VerticalAlignment="Center"/>
 		
 		<Separator Grid.Row="1"/>
 		
@@ -41,10 +42,14 @@
 						        Content="{Binding TogglePaneContent}"
 						        Width="{Binding PaneMinimizedWidth}"
 						        Height="{Binding PaneMinimizedWidth}"
-						        HorizontalAlignment="Right"/>
+						        HorizontalAlignment="Right" VerticalAlignment="Center"/>
 					</Grid>
 					
 					<Separator/>
+					
+					<ScrollViewer>
+						<ItemsControl ItemsSource="{Binding ModuleButtons}"/>
+					</ScrollViewer>
 				</StackPanel>
 			</SplitView.Pane>
 			

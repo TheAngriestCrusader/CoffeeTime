@@ -1,4 +1,5 @@
-﻿using CoffeeTime.States;
+﻿using System.Collections.ObjectModel;
+using CoffeeTime.States;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
@@ -13,7 +14,8 @@ namespace CoffeeTime.ViewModels
         // Properties
         [ObservableProperty] private bool _isPaneOpen;
         [ObservableProperty] private double _paneMinimizedWidth;
-        [ObservableProperty] private string _togglePaneContent;
+        [ObservableProperty] private string? _togglePaneContent;
+        [ObservableProperty] private ObservableCollection<ModuleButtonViewModel> _moduleButtons = [];
 
         public MainWindowViewModel(HeaderState header, MainDisplayState mainDisplay)
         {
@@ -26,14 +28,27 @@ namespace CoffeeTime.ViewModels
             IsPaneOpen = true;
             MainDisplay.CurrentControl = new SplashScreenViewModel();
             PaneMinimizedWidth = 32;
-            TogglePaneContent = IsPaneOpen ? "<" : ">";
+            
+            // ModuleButtons
+            ModuleButtons.Add(new ModuleButtonViewModel("Test", () => new ViewModelBase(), MainDisplay));
+            UpdatePaneWidgets();
         }
 
         [RelayCommand]
         private void TogglePane()
         {
             IsPaneOpen = !IsPaneOpen;
+            UpdatePaneWidgets();
+        }
+
+        private void UpdatePaneWidgets()
+        {
             TogglePaneContent = IsPaneOpen ? "<" : ">";
+
+            foreach (var moduleButton in ModuleButtons)
+            {
+                moduleButton.IsTitleVisible = IsPaneOpen;
+            }
         }
     }
 }
