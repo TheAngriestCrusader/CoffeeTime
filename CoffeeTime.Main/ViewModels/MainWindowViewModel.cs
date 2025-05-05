@@ -1,4 +1,4 @@
-﻿using Avalonia.Interactivity;
+﻿using CoffeeTime.Main.States;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
@@ -7,13 +7,15 @@ namespace CoffeeTime.Main.ViewModels
     public partial class MainWindowViewModel : ViewModelBase
     {
         [ObservableProperty]
-        private string _headerText;
+        private HeaderState _header;
 
-        [ObservableProperty] private bool _isPaneOpen;
+        [ObservableProperty]
+        private bool _isPaneOpen;
 
-        public MainWindowViewModel()
+        public MainWindowViewModel(HeaderState header)
         {
-            HeaderText = "This is header text.";
+            Header = header;
+            Header.Text = "Coffee Time";
             IsPaneOpen = true;
         }
 

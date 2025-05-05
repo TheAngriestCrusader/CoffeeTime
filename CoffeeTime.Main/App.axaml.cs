@@ -1,5 +1,3 @@
-using System;
-using System.Linq;
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Data.Core.Plugins;
@@ -7,6 +5,8 @@ using Avalonia.Markup.Xaml;
 using CoffeeTime.Main.ViewModels;
 using CoffeeTime.Main.Views;
 using Microsoft.Extensions.DependencyInjection;
+using System;
+using System.Linq;
 
 namespace CoffeeTime.Main
 {
