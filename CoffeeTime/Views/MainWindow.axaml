@@ -34,7 +34,7 @@
 				<StackPanel>
 					<Grid>
 						<TextBlock Text="Modules" TextAlignment="Center"
-						           IsVisible="{Binding IsPaneHeaderVisible}"
+						           IsVisible="{Binding IsPaneOpen}"
 						           VerticalAlignment="Center"/>
 						
 						<Button Command="{Binding TogglePaneCommand}"

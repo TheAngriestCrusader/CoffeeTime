@@ -12,7 +12,6 @@ namespace CoffeeTime.ViewModels
         
         // Properties
         [ObservableProperty] private bool _isPaneOpen;
-        [ObservableProperty] private bool _isPaneHeaderVisible;
         [ObservableProperty] private double _paneMinimizedWidth;
         [ObservableProperty] private string _togglePaneContent;
 
@@ -25,7 +24,6 @@ namespace CoffeeTime.ViewModels
             // Property assignments
             Header.Text = "Coffee Time";
             IsPaneOpen = true;
-            IsPaneHeaderVisible = IsPaneOpen ? true : false;
             MainDisplay.CurrentControl = new SplashScreenViewModel();
             PaneMinimizedWidth = 32;
             TogglePaneContent = IsPaneOpen ? "<" : ">";
@@ -35,7 +33,6 @@ namespace CoffeeTime.ViewModels
         private void TogglePane()
         {
             IsPaneOpen = !IsPaneOpen;
-            IsPaneHeaderVisible = IsPaneOpen ? true : false;
             TogglePaneContent = IsPaneOpen ? "<" : ">";
         }
     }
