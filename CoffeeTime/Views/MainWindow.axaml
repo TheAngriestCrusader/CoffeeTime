@@ -45,7 +45,7 @@
 						        HorizontalAlignment="Right" VerticalAlignment="Center"/>
 					</Grid>
 					
-					<Separator/>
+					<Separator Margin="0, 2, 0, 2"/>
 					
 					<ScrollViewer>
 						<ItemsControl ItemsSource="{Binding ModuleButtons}"/>
