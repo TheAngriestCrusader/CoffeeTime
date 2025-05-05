@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
@@ -6,11 +7,16 @@ using Avalonia.Data.Core.Plugins;
 using Avalonia.Markup.Xaml;
 using CoffeeTime.Main.ViewModels;
 using CoffeeTime.Main.Views;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace CoffeeTime.Main
 {
     public partial class App : Application
     {
+        private static IServiceProvider? _services;
+        public static IServiceProvider Services =>
+            _services ?? throw new InvalidOperationException("Services has not been initialized.");
+
         public override void Initialize()
         {
             AvaloniaXamlLoader.Load(this);
@@ -18,14 +24,17 @@ namespace CoffeeTime.Main
 
         public override void OnFrameworkInitializationCompleted()
         {
+            _services = ServiceConfiguration.ConfigureServices();
+
             if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
             {
                 // Avoid duplicate validations from both Avalonia and the CommunityToolkit. 
                 // More info: https://docs.avaloniaui.net/docs/guides/development-guides/data-validation#manage-validationplugins
                 DisableAvaloniaDataAnnotationValidation();
+
                 desktop.MainWindow = new MainWindow
                 {
-                    DataContext = new MainWindowViewModel(),
+                    DataContext = Services.GetRequiredService<MainWindowViewModel>()
                 };
             }
 
