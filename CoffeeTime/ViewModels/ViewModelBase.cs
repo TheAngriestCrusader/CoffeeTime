@@ -1,6 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 
-namespace CoffeeTime.Main.ViewModels
+namespace CoffeeTime.ViewModels
 {
     public class ViewModelBase : ObservableObject
     {

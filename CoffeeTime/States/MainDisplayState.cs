@@ -1,7 +1,7 @@
-﻿using CoffeeTime.Main.ViewModels;
+﻿using CoffeeTime.ViewModels;
 using CommunityToolkit.Mvvm.ComponentModel;
 
-namespace CoffeeTime.Main.States;
+namespace CoffeeTime.States;
 
 public partial class MainDisplayState : ObservableObject
 {

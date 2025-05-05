@@ -1,10 +1,10 @@
-using CoffeeTime.Main.ViewModels;
 using System;
-using CoffeeTime.Main.States;
-using CoffeeTime.Main.Views;
+using CoffeeTime.Views;
+using CoffeeTime.States;
+using CoffeeTime.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace CoffeeTime.Main
+namespace CoffeeTime
 {
     public static class ServiceConfiguration
     {

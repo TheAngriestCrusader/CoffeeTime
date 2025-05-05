@@ -1,6 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 
-namespace CoffeeTime.Main.States;
+namespace CoffeeTime.States;
 
 public partial class HeaderState : ObservableObject
 {

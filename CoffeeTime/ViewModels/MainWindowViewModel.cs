@@ -1,8 +1,8 @@
-﻿using CoffeeTime.Main.States;
+﻿using CoffeeTime.States;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
-namespace CoffeeTime.Main.ViewModels
+namespace CoffeeTime.ViewModels
 {
     public partial class MainWindowViewModel : ViewModelBase
     {

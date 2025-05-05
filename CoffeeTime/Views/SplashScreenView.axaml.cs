@@ -2,7 +2,7 @@
 using Avalonia.Controls;
 using Avalonia.Markup.Xaml;
 
-namespace CoffeeTime.Main.Views;
+namespace CoffeeTime.Views;
 
 public partial class SplashScreenView : UserControl
 {

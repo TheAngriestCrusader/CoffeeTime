@@ -1,7 +1,7 @@
 ﻿using System;
 using Avalonia;
 
-namespace CoffeeTime.Main
+namespace CoffeeTime
 {
     internal sealed class Program
     {

@@ -1,6 +1,6 @@
 using Avalonia.Controls;
 
-namespace CoffeeTime.Main.Views
+namespace CoffeeTime.Views
 {
     public partial class MainWindow : Window
     {
