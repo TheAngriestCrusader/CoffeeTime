@@ -18,7 +18,6 @@ namespace CoffeeTime
             
             // View Models
             services.AddSingleton<MainWindowViewModel>();
-            services.AddSingleton<SplashScreenViewModel>();
 
             return services.BuildServiceProvider();
         }
