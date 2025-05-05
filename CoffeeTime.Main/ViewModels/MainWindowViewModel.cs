@@ -6,23 +6,32 @@ namespace CoffeeTime.Main.ViewModels
 {
     public partial class MainWindowViewModel : ViewModelBase
     {
-        [ObservableProperty]
-        private HeaderState _header;
+        // States
+        [ObservableProperty] private HeaderState _header;
+        [ObservableProperty] private MainDisplayState _mainDisplay;
+        
+        // Properties
+        [ObservableProperty] private bool _isPaneOpen;
+        [ObservableProperty] private string _togglePaneContent;
 
-        [ObservableProperty]
-        private bool _isPaneOpen;
-
-        public MainWindowViewModel(HeaderState header)
+        public MainWindowViewModel(HeaderState header, MainDisplayState mainDisplay)
         {
+            // State assignments
             Header = header;
+            MainDisplay = mainDisplay;
+            
+            // Property assignments
             Header.Text = "Coffee Time";
             IsPaneOpen = true;
+            MainDisplay.CurrentControl = new SplashScreenViewModel();
+            TogglePaneContent = IsPaneOpen ? "<" : ">";
         }
 
         [RelayCommand]
         private void TogglePane()
         {
             IsPaneOpen = !IsPaneOpen;
+            TogglePaneContent = IsPaneOpen ? "<" : ">";
         }
     }
 }

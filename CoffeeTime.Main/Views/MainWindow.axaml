@@ -10,20 +10,31 @@
         Title="CoffeeTime.Main"
 		Width="960" Height="540" MinWidth="960" MinHeight="540">
 
-	<StackPanel Orientation="Vertical">
-		<TextBlock Text="{Binding Header.Text}" TextAlignment="Center"/>
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="*"/>
+		</Grid.RowDefinitions>
 		
-		<Separator/>
+		<TextBlock Grid.Row="0"
+		           Text="{Binding Header.Text}" TextAlignment="Center"/>
 		
-		<SplitView DisplayMode="CompactInline" IsPaneOpen="{Binding IsPaneOpen}">
+		<Separator Grid.Row="1"/>
+		
+		<SplitView Grid.Row="2"
+		           DisplayMode="CompactInline" IsPaneOpen="{Binding IsPaneOpen}">
 			<SplitView.Pane>
-				<Button Content="☰" Command="{Binding TogglePaneCommand}"/>
+				<Button Command="{Binding TogglePaneCommand}"
+				        Content="{Binding TogglePaneContent}"
+				        HorizontalAlignment="Right" VerticalAlignment="Top"/>
 			</SplitView.Pane>
 			
 			<SplitView.Content>
-				CONTENT
+				<ScrollViewer>
+					<ContentControl Content="{Binding MainDisplay.CurrentControl}"/>
+				</ScrollViewer>
 			</SplitView.Content>
 		</SplitView>
-	</StackPanel>
-
+	</Grid>
 </Window>
