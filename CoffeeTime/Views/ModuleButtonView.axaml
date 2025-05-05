@@ -9,16 +9,21 @@
     <Button Command="{Binding OpenModule}"
             HorizontalAlignment="Stretch">
         <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            
             <!-- Module icon -->
             <Image/>
             
             <!-- Module dependency icons -->
-            <Grid>
-                
-            </Grid>
+            <WrapPanel Grid.Column="1"/>
             
             <!-- Module title -->
-            <TextBlock Text="{Binding Title}" TextAlignment="Center"
+            <TextBlock Grid.Column="2"
+                       Text="{Binding Title}" TextAlignment="Center"
                        IsVisible="{Binding IsTitleVisible}"/>
         </Grid>
     </Button>
