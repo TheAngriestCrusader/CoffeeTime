@@ -16,14 +16,31 @@
             </Grid.ColumnDefinitions>
             
             <!-- Module icon -->
-            <Image/>
+            <Image HorizontalAlignment="Left" VerticalAlignment="Center"/>
             
             <!-- Module dependency icons -->
-            <WrapPanel Grid.Column="1"/>
-            
+            <ItemsControl Grid.Column="1"
+                          ItemsSource="{Binding DependencyIcons}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Vertical"
+                                   HorizontalAlignment="Left" VerticalAlignment="Center"
+                                   Height="64"
+                                   ItemWidth="32" ItemHeight="32"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Image Source="{Binding}" Width="32" Height="32"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+
             <!-- Module title -->
             <TextBlock Grid.Column="2"
                        Text="{Binding Title}" TextAlignment="Center"
+                       HorizontalAlignment="Right" VerticalAlignment="Center"
                        IsVisible="{Binding IsTitleVisible}"/>
         </Grid>
     </Button>

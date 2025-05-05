@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.ObjectModel;
+using Avalonia.Media.Imaging;
 using CoffeeTime.States;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
@@ -9,6 +11,7 @@ public partial class ModuleButtonViewModel : ViewModelBase
 {
     [ObservableProperty] private MainDisplayState _mainDisplay;
     
+    [ObservableProperty] private ObservableCollection<Bitmap> _dependencyIcons = [];
     [ObservableProperty] private bool _isTitleVisible;
     [ObservableProperty] private string _title;
 
