@@ -1,7 +1,15 @@
-﻿namespace CoffeeTime.Main.ViewModels
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+
+namespace CoffeeTime.Main.ViewModels
 {
     public partial class MainWindowViewModel : ViewModelBase
     {
-        public string Greeting { get; } = "Welcome to Avalonia!";
+        [ObservableProperty]
+        private string headerText;
+
+        public MainWindowViewModel()
+        {
+            HeaderText = "This is header text.";
+        }
     }
 }
