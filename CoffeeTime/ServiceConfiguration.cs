@@ -13,7 +13,7 @@ namespace CoffeeTime
             var services = new ServiceCollection();
 
             //  Application-wide states
-            services.AddSingleton<EndpointInfoState>();
+            services.AddSingleton<EndpointState>();
             services.AddSingleton<HeaderState>();
             services.AddSingleton<MainDisplayState>();
             

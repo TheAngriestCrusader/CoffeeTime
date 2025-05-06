@@ -1,19 +1,29 @@
-﻿using CoffeeTime.States;
+﻿using CoffeeTime.Interfaces;
+using CoffeeTime.States;
 using CoffeeTime.ViewModels;
 using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace CoffeeTime.Modules.EndpointInfo.ViewModels;
 
-public partial class EndpointInfoViewModel : ViewModelBase
+public partial class EndpointInfoViewModel : ViewModelBase, IModuleViewModel
 {
+    // Module properties
+    public string? RequiredOsName { get; }
+    public bool Requires64Bit { get; }
+    
     // States
-    [ObservableProperty] private EndpointInfoState _endpointInfo;
+    [ObservableProperty] private EndpointState _endpoint;
     
     // Properties
-    [ObservableProperty] private string _placeholder = "This is EndpointInfo";
+    [ObservableProperty] private string _placeholder = "This is Endpoint";
 
-    public EndpointInfoViewModel(EndpointInfoState endpointInfo)
+    public EndpointInfoViewModel(EndpointState endpoint)
     {
-        EndpointInfo = endpointInfo;
+        // Module properties
+        RequiredOsName = null;
+        Requires64Bit = false;
+        
+        // Property assignment
+        Endpoint = endpoint;
     }
 }

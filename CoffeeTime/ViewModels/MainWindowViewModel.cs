@@ -11,7 +11,6 @@ namespace CoffeeTime.ViewModels
     public partial class MainWindowViewModel : ViewModelBase
     {
         // States
-        [ObservableProperty] private EndpointInfoState _endpointInfo;
         [ObservableProperty] private HeaderState _header;
         [ObservableProperty] private MainDisplayState _mainDisplay;
         
@@ -22,13 +21,11 @@ namespace CoffeeTime.ViewModels
         [ObservableProperty] private ObservableCollection<IModuleButtonViewModel> _moduleButtons = [];
 
         public MainWindowViewModel(
-            EndpointInfoState endpointInfo,
             HeaderState header,
             MainDisplayState mainDisplay,
             INavigationService navigation)
         {
             // State assignments
-            EndpointInfo = endpointInfo;
             Header = header;
             MainDisplay = mainDisplay;
             
