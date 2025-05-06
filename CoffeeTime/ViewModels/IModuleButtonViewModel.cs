@@ -8,7 +8,7 @@ public interface IModuleButtonViewModel
 {
     ObservableCollection<Bitmap> DependencyIcons { get; }
     Bitmap Icon { get; }
-    bool IsExpanded { get; set;  }
+    bool IsExpanded { get; set; }
     ICommand OpenModule { get; }
     string Title { get; }
 }

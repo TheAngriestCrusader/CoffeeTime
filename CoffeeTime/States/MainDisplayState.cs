@@ -1,9 +1,9 @@
-﻿using CoffeeTime.ViewModels;
+﻿using CoffeeTime.Interfaces;
 using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace CoffeeTime.States;
 
 public partial class MainDisplayState : ObservableObject
 {
-    [ObservableProperty] private ViewModelBase? _currentControl;
+    [ObservableProperty] private IModuleViewModel? _currentControl;
 }

@@ -10,19 +10,19 @@
             HorizontalAlignment="Stretch">
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            
+
             <!-- Module icon -->
             <Image Source="{Binding Icon}"
                    Margin="0, 0, 16, 0"
                    Width="32"
                    Height="32"
                    HorizontalAlignment="Left"
-                   VerticalAlignment="Center"/>
-            
+                   VerticalAlignment="Center" />
+
             <!-- Module dependency icons -->
             <ItemsControl Grid.Column="1"
                           ItemsSource="{Binding DependencyIcons}"
@@ -34,15 +34,15 @@
                                    VerticalAlignment="Center"
                                    MaxHeight="32"
                                    ItemWidth="16"
-                                   ItemHeight="16"/>
+                                   ItemHeight="16" />
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
-                
+
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <Image Source="{Binding}"
                                Width="16"
-                               Height="16"/>
+                               Height="16" />
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
@@ -53,7 +53,7 @@
                        TextAlignment="Center"
                        HorizontalAlignment="Right"
                        VerticalAlignment="Center"
-                       IsVisible="{Binding IsExpanded}"/>
+                       IsVisible="{Binding IsExpanded}" />
         </Grid>
     </Button>
 </UserControl>

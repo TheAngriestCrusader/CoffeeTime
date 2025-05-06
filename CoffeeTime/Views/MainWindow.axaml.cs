@@ -1,12 +1,11 @@
 using Avalonia.Controls;
 
-namespace CoffeeTime.Views
+namespace CoffeeTime.Views;
+
+public partial class MainWindow : Window
 {
-    public partial class MainWindow : Window
+    public MainWindow()
     {
-        public MainWindow()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

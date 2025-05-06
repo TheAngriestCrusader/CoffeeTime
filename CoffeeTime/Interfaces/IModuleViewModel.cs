@@ -4,4 +4,5 @@ public interface IModuleViewModel
 {
     string? RequiredOsName { get; }
     bool Requires64Bit { get; }
+    bool RequiresAdministrator { get; }
 }

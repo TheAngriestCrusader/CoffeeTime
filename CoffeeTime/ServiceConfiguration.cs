@@ -1,33 +1,33 @@
 using System;
-using Microsoft.Extensions.DependencyInjection;
-using CoffeeTime.States;
 using CoffeeTime.Services;
+using CoffeeTime.States;
 using CoffeeTime.ViewModels;
+using Microsoft.Extensions.DependencyInjection;
 
-namespace CoffeeTime
+namespace CoffeeTime;
+
+public static class ServiceConfiguration
 {
-    public static class ServiceConfiguration
+    public static IServiceProvider ConfigureServices()
     {
-        public static IServiceProvider ConfigureServices()
-        {
-            var services = new ServiceCollection();
+        var services = new ServiceCollection();
 
-            //  Application-wide states
-            services.AddSingleton<EndpointState>();
-            services.AddSingleton<HeaderState>();
-            services.AddSingleton<MainDisplayState>();
-            
-            services.AddSingleton<IViewModelFactoryService, ViewModelFactoryService>();
-            services.AddSingleton<INavigationService, NavigationService>();
+        //  Application-wide states
+        services.AddSingleton<EndpointState>();
+        services.AddSingleton<HeaderState>();
+        services.AddSingleton<MainDisplayState>();
 
-            //  Auto-register all ViewModels in this assembly as transient
-            services.Scan(scan => scan
-                .FromAssemblyOf<MainWindowViewModel>()
-                .AddClasses(classes => classes.AssignableTo<ViewModelBase>())
-                .AsSelf()
-                .WithTransientLifetime());
+        services.AddSingleton<IModuleViewModelFactoryService, ModuleModuleViewModelFactoryService>();
+        services.AddSingleton<IMetricsPollingService, MetricsPollingService>();
+        services.AddSingleton<IModuleNavigationService, ModuleNavigationService>();
 
-            return services.BuildServiceProvider();
-        }
+        //  Auto-register all ViewModels in this assembly as transient
+        services.Scan(scan => scan
+            .FromAssemblyOf<MainWindowViewModel>()
+            .AddClasses(classes => classes.AssignableTo<ViewModelBase>())
+            .AsSelf()
+            .WithTransientLifetime());
+
+        return services.BuildServiceProvider();
     }
 }

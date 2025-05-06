@@ -4,50 +4,51 @@ using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Data.Core.Plugins;
 using Avalonia.Markup.Xaml;
-using Microsoft.Extensions.DependencyInjection;
 using CoffeeTime.ViewModels;
 using CoffeeTime.Views;
+using Microsoft.Extensions.DependencyInjection;
 
-namespace CoffeeTime
+namespace CoffeeTime;
+
+public class App : Application
 {
-    public class App : Application
+    static App()
     {
-        private static IServiceProvider Services { get; }
+        Services = ServiceConfiguration.ConfigureServices();
+    }
 
-        static App()
+    private static IServiceProvider Services { get; }
+
+    public override void Initialize()
+    {
+        AvaloniaXamlLoader.Load(this);
+    }
+
+    public override void OnFrameworkInitializationCompleted()
+    {
+        if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
-            Services = ServiceConfiguration.ConfigureServices();
-        }
+            // Avoid duplicate validations
+            DisableAvaloniaDataAnnotationValidation();
 
-        public override void Initialize() => AvaloniaXamlLoader.Load(this);
+            // Resolve MainWindowViewModel via DI
+            var mainVm = Services.GetRequiredService<MainWindowViewModel>();
 
-        public override void OnFrameworkInitializationCompleted()
-        {
-
-            if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
+            desktop.MainWindow = new MainWindow
             {
-                // Avoid duplicate validations
-                DisableAvaloniaDataAnnotationValidation();
-
-                // Resolve MainWindowViewModel via DI
-                var mainVm = Services.GetRequiredService<MainWindowViewModel>();
-
-                desktop.MainWindow = new MainWindow
-                {
-                    DataContext = mainVm
-                };
-            }
-
-            base.OnFrameworkInitializationCompleted();
+                DataContext = mainVm
+            };
         }
 
-        private static void DisableAvaloniaDataAnnotationValidation()
-        {
-            var plugins = BindingPlugins.DataValidators
-                .OfType<DataAnnotationsValidationPlugin>()
-                .ToArray();
-            foreach (var plugin in plugins)
-                BindingPlugins.DataValidators.Remove(plugin);
-        }
+        base.OnFrameworkInitializationCompleted();
+    }
+
+    private static void DisableAvaloniaDataAnnotationValidation()
+    {
+        var plugins = BindingPlugins.DataValidators
+            .OfType<DataAnnotationsValidationPlugin>()
+            .ToArray();
+        foreach (var plugin in plugins)
+            BindingPlugins.DataValidators.Remove(plugin);
     }
 }

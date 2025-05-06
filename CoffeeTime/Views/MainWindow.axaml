@@ -8,56 +8,59 @@
         x:DataType="vm:MainWindowViewModel"
         Icon="/Assets/CoffeeTimeIcon.ico"
         Title="CoffeeTime"
-		Width="960" Height="540" MinWidth="960" MinHeight="540">
-	<Window.Styles>
-		<Style Selector="Separator">
-			<Setter Property="Margin" Value="0"/>
-		</Style>
-	</Window.Styles>
+        Width="960" Height="540" MinWidth="960" MinHeight="540">
+    <Window.Styles>
+        <Style Selector="Separator">
+            <Setter Property="Margin" Value="0" />
+        </Style>
+    </Window.Styles>
 
-	<Grid>
-		<Grid.RowDefinitions>
-			<RowDefinition Height="Auto"/>
-			<RowDefinition Height="Auto"/>
-			<RowDefinition Height="*"/>
-		</Grid.RowDefinitions>
-		
-		<TextBlock Grid.Row="0"
-		           Text="{Binding Header.Text}" TextAlignment="Center"
-		           VerticalAlignment="Center"/>
-		
-		<Separator Grid.Row="1"/>
-		
-		<SplitView Grid.Row="2"
-		           DisplayMode="CompactInline" IsPaneOpen="{Binding IsPaneOpen}"
-		           CompactPaneLength="{Binding PaneMinimizedWidth}">
-			<SplitView.Pane>
-				<StackPanel>
-					<Grid>
-						<TextBlock Text="Modules" TextAlignment="Center"
-						           IsVisible="{Binding IsPaneOpen}"
-						           VerticalAlignment="Center"/>
-						
-						<Button Command="{Binding TogglePaneCommand}"
-						        Content="{Binding TogglePaneContent}"
-						        Width="{Binding PaneMinimizedWidth}"
-						        Height="{Binding PaneMinimizedWidth}"
-						        HorizontalAlignment="Right" VerticalAlignment="Center"/>
-					</Grid>
-					
-					<Separator Margin="0, 2, 0, 2"/>
-					
-					<ScrollViewer>
-						<ItemsControl ItemsSource="{Binding ModuleButtons}"/>
-					</ScrollViewer>
-				</StackPanel>
-			</SplitView.Pane>
-			
-			<SplitView.Content>
-				<ScrollViewer>
-					<ContentControl Content="{Binding MainDisplay.CurrentControl}"/>
-				</ScrollViewer>
-			</SplitView.Content>
-		</SplitView>
-	</Grid>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0"
+                   Text="{Binding Header.Text}"
+                   TextAlignment="Center"
+                   FontSize="24"
+                   Margin="4"
+                   VerticalAlignment="Center" />
+
+        <Separator Grid.Row="1" />
+
+        <SplitView Grid.Row="2"
+                   DisplayMode="CompactInline" IsPaneOpen="{Binding IsPaneOpen}"
+                   CompactPaneLength="{Binding PaneMinimizedWidth}">
+            <SplitView.Pane>
+                <StackPanel>
+                    <Grid>
+                        <TextBlock Text="Modules" TextAlignment="Center"
+                                   IsVisible="{Binding IsPaneOpen}"
+                                   VerticalAlignment="Center" />
+
+                        <Button Command="{Binding TogglePaneCommand}"
+                                Content="{Binding TogglePaneContent}"
+                                Width="{Binding PaneMinimizedWidth}"
+                                Height="{Binding PaneMinimizedWidth}"
+                                HorizontalAlignment="Right" VerticalAlignment="Center" />
+                    </Grid>
+
+                    <Separator Margin="0, 2, 0, 2" />
+
+                    <ScrollViewer>
+                        <ItemsControl ItemsSource="{Binding ModuleButtons}" />
+                    </ScrollViewer>
+                </StackPanel>
+            </SplitView.Pane>
+
+            <SplitView.Content>
+                <ScrollViewer>
+                    <ContentControl Content="{Binding MainDisplay.CurrentControl}" />
+                </ScrollViewer>
+            </SplitView.Content>
+        </SplitView>
+    </Grid>
 </Window>

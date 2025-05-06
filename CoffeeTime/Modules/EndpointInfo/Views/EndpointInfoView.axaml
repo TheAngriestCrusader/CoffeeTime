@@ -6,5 +6,17 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="CoffeeTime.Modules.EndpointInfo.Views.EndpointInfoView"
              x:DataType="vm:EndpointInfoViewModel">
-    <TextBlock Text="{Binding Placeholder}"/>
+    <StackPanel>
+        <Border BorderThickness="1"
+                BorderBrush="Gray"
+                CornerRadius="8"
+                Margin="16, 8, 16, 8"
+                HorizontalAlignment="Stretch">
+            <TextBlock Text="{Binding Title}"
+                       TextAlignment="Center"
+                       FontSize="16" />
+        </Border>
+
+        <TextBlock Text="{Binding OsVersion}" />
+    </StackPanel>
 </UserControl>

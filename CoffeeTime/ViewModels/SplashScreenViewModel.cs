@@ -1,6 +1,5 @@
 ﻿namespace CoffeeTime.ViewModels;
 
-public partial class SplashScreenViewModel : ViewModelBase
+public class SplashScreenViewModel : ViewModelBase
 {
-    
 }
