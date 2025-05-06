@@ -1,37 +1,34 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Windows.Input;
 using Avalonia.Media.Imaging;
-using CoffeeTime.States;
+using CoffeeTime.Services;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
-namespace CoffeeTime.ViewModels;
-
-public partial class ModuleButtonViewModel : ViewModelBase
+namespace CoffeeTime.ViewModels
 {
-    [ObservableProperty] private MainDisplayState _mainDisplay;
-    
-    [ObservableProperty] private ObservableCollection<Bitmap> _dependencyIcons = [];
-    [ObservableProperty] private bool _isTitleVisible;
-    [ObservableProperty] private Bitmap _moduleIcon;
-    [ObservableProperty] private string _title;
-
-    private readonly Func<ViewModelBase> _factory;
-
-    public ModuleButtonViewModel(string title,
-        Func<ViewModelBase> factory,
-        Bitmap moduleIcon,
-        MainDisplayState mainDisplay)
+    public partial class ModuleButtonViewModel<TModuleVm> : ViewModelBase, IModuleButtonViewModel
+        where TModuleVm : ViewModelBase
     {
-        Title = title;
-        _factory = factory;
-        MainDisplay = mainDisplay;
-        ModuleIcon = moduleIcon;
-    }
+        [ObservableProperty] private Bitmap _icon;
+        [ObservableProperty] private bool _isTitleVisible;
+        [ObservableProperty] private string _title;
 
-    [RelayCommand]
-    public void OpenModule()
-    {
-        MainDisplay.CurrentControl = _factory();
+        public ObservableCollection<Bitmap> DependencyIcons { get; } = [];
+        public INavigationService Navigation { get; }
+        public ICommand OpenModule { get; }
+        
+
+        public ModuleButtonViewModel(
+            string title,
+            Bitmap icon,
+            INavigationService navigation)
+        {
+            Icon  = icon;
+            Navigation = navigation;
+            OpenModule = new RelayCommand(() => Navigation.Navigate<TModuleVm>());
+            Title = title;
+        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using CoffeeTime.Modules.EndpointInfo.ViewModels;
+using CoffeeTime.Services;
 using CoffeeTime.States;
 using CoffeeTime.Utilities;
 using CommunityToolkit.Mvvm.ComponentModel;
@@ -10,6 +11,7 @@ namespace CoffeeTime.ViewModels
     public partial class MainWindowViewModel : ViewModelBase
     {
         // States
+        [ObservableProperty] private EndpointInfoState _endpointInfo;
         [ObservableProperty] private HeaderState _header;
         [ObservableProperty] private MainDisplayState _mainDisplay;
         
@@ -17,26 +19,31 @@ namespace CoffeeTime.ViewModels
         [ObservableProperty] private bool _isPaneOpen;
         [ObservableProperty] private double _paneMinimizedWidth;
         [ObservableProperty] private string? _togglePaneContent;
-        [ObservableProperty] private ObservableCollection<ModuleButtonViewModel> _moduleButtons = [];
+        [ObservableProperty] private ObservableCollection<IModuleButtonViewModel> _moduleButtons = [];
 
-        public MainWindowViewModel(HeaderState header, MainDisplayState mainDisplay)
+        public MainWindowViewModel(
+            EndpointInfoState endpointInfo,
+            HeaderState header,
+            MainDisplayState mainDisplay,
+            INavigationService navigation)
         {
             // State assignments
+            EndpointInfo = endpointInfo;
             Header = header;
             MainDisplay = mainDisplay;
             
             // Property assignments
-            Header.Text = "Coffee Time";
+            Header.Text = "CoffeeTime";
             IsPaneOpen = true;
             MainDisplay.CurrentControl = new SplashScreenViewModel();
             PaneMinimizedWidth = 48;
             
             // ModuleButtons
-            ModuleButtons.Add(new ModuleButtonViewModel(
-                "Path Watcher",
-                () => new EndpointInfoViewModel(),
-                Converter.AvaresToBitmap("avares://CoffeeTime/Assets/EndpointInfoIcon.png"),
-                MainDisplay));
+            ModuleButtons.Add(
+                new ModuleButtonViewModel<EndpointInfoViewModel>(
+                    "Endpoint Info",
+                    Converter.AvaresToBitmap("avares://CoffeeTime/Assets/EndpointInfoIcon.png"),
+                    navigation));
             UpdatePaneWidgets();
         }
 

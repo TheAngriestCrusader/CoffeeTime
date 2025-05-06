@@ -4,6 +4,5 @@ namespace CoffeeTime.States;
 
 public partial class HeaderState : ObservableObject
 {
-    [ObservableProperty]
-    private string? _text;
+    [ObservableProperty] private string? _text;
 }

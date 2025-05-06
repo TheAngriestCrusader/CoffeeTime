@@ -5,7 +5,7 @@
              xmlns:vm="clr-namespace:CoffeeTime.ViewModels"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="CoffeeTime.Views.ModuleButtonView"
-             x:DataType="vm:ModuleButtonViewModel">
+             x:DataType="vm:IModuleButtonViewModel">
     <Button Command="{Binding OpenModule}"
             HorizontalAlignment="Stretch">
         <Grid>
@@ -16,7 +16,7 @@
             </Grid.ColumnDefinitions>
             
             <!-- Module icon -->
-            <Image Source="{Binding ModuleIcon}"
+            <Image Source="{Binding Icon}"
                    Margin="0, 0, 16, 0"
                    Width="32" Height="32"
                    HorizontalAlignment="Left" VerticalAlignment="Center"/>
