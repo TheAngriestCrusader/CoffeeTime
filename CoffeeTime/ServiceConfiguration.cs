@@ -1,4 +1,5 @@
 using System;
+using CoffeeTime.Modules.EndpointInfo.ViewModels;
 using CoffeeTime.Views;
 using CoffeeTime.States;
 using CoffeeTime.ViewModels;
@@ -18,6 +19,7 @@ namespace CoffeeTime
             
             // View Models
             services.AddSingleton<MainWindowViewModel>();
+            services.AddSingleton<EndpointInfoViewModel>();
 
             return services.BuildServiceProvider();
         }

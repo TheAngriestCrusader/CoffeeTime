@@ -1,5 +1,5 @@
-﻿using System;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
+using CoffeeTime.Modules.EndpointInfo.ViewModels;
 using CoffeeTime.States;
 using CoffeeTime.Utilities;
 using CommunityToolkit.Mvvm.ComponentModel;
@@ -34,8 +34,8 @@ namespace CoffeeTime.ViewModels
             // ModuleButtons
             ModuleButtons.Add(new ModuleButtonViewModel(
                 "Path Watcher",
-                () => new ViewModelBase(),
-                Converter.AvaresToBitmap("avares://CoffeeTime/Assets/PathWatcherIcon.png"),
+                () => new EndpointInfoViewModel(),
+                Converter.AvaresToBitmap("avares://CoffeeTime/Assets/EndpointInfoIcon.png"),
                 MainDisplay));
             UpdatePaneWidgets();
         }
