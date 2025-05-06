@@ -18,35 +18,42 @@
             <!-- Module icon -->
             <Image Source="{Binding Icon}"
                    Margin="0, 0, 16, 0"
-                   Width="32" Height="32"
-                   HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                   Width="32"
+                   Height="32"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Center"/>
             
             <!-- Module dependency icons -->
             <ItemsControl Grid.Column="1"
-                          ItemsSource="{Binding DependencyIcons}">
+                          ItemsSource="{Binding DependencyIcons}"
+                          IsVisible="{Binding IsExpanded}">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel Orientation="Vertical"
-                                   HorizontalAlignment="Left" VerticalAlignment="Center"
-                                   Height="32"
-                                   ItemWidth="16" ItemHeight="16"
-                                   IsVisible="{Binding IsTitleVisible}"/>
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Center"
+                                   MaxHeight="32"
+                                   ItemWidth="16"
+                                   ItemHeight="16"/>
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
                 
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <Image Source="{Binding}"
-                               Width="16" Height="16"/>
+                               Width="16"
+                               Height="16"/>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
 
             <!-- Module title -->
             <TextBlock Grid.Column="2"
-                       Text="{Binding Title}" TextAlignment="Center"
-                       HorizontalAlignment="Right" VerticalAlignment="Center"
-                       IsVisible="{Binding IsTitleVisible}"/>
+                       Text="{Binding Title}"
+                       TextAlignment="Center"
+                       HorizontalAlignment="Right"
+                       VerticalAlignment="Center"
+                       IsVisible="{Binding IsExpanded}"/>
         </Grid>
     </Button>
 </UserControl>

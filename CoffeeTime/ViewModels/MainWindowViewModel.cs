@@ -60,7 +60,7 @@ namespace CoffeeTime.ViewModels
 
             foreach (var moduleButton in ModuleButtons)
             {
-                moduleButton.IsTitleVisible = IsPaneOpen;
+                moduleButton.IsExpanded = IsPaneOpen;
             }
         }
     }

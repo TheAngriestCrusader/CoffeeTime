@@ -3,6 +3,7 @@ using System.Collections.ObjectModel;
 using System.Windows.Input;
 using Avalonia.Media.Imaging;
 using CoffeeTime.Services;
+using CoffeeTime.Utilities;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
@@ -12,23 +13,23 @@ namespace CoffeeTime.ViewModels
         where TModuleVm : ViewModelBase
     {
         [ObservableProperty] private Bitmap _icon;
-        [ObservableProperty] private bool _isTitleVisible;
+        [ObservableProperty] private bool _isExpanded;
         [ObservableProperty] private string _title;
 
         public ObservableCollection<Bitmap> DependencyIcons { get; } = [];
-        public INavigationService Navigation { get; }
         public ICommand OpenModule { get; }
         
-
         public ModuleButtonViewModel(
             string title,
             Bitmap icon,
             INavigationService navigation)
         {
-            Icon  = icon;
-            Navigation = navigation;
-            OpenModule = new RelayCommand(() => Navigation.Navigate<TModuleVm>());
+            Icon = icon;
+            OpenModule = new RelayCommand(navigation.Navigate<TModuleVm>);
             Title = title;
+
+            var img = Converter.AvaresToBitmap("avares://CoffeeTime/Assets/WindowsModuleIcon.png");
+            DependencyIcons.Add(img);
         }
     }
 }
