@@ -10,5 +10,8 @@ public class MetricsPollingService(EndpointState endpoint) : IMetricsPollingServ
     {
         endpoint.Hostname = Environment.MachineName;
         endpoint.OsVersion = Environment.OSVersion.ToString();
+        endpoint.ProcessorCount = Environment.ProcessorCount;
+        endpoint.UserDomainName = Environment.UserDomainName;
+        endpoint.UserName = Environment.UserName;
     }
 }

@@ -6,17 +6,45 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="CoffeeTime.Modules.EndpointInfo.Views.EndpointInfoView"
              x:DataType="vm:EndpointInfoViewModel">
-    <StackPanel>
+    <StackPanel Margin="8">
         <Border BorderThickness="1"
                 BorderBrush="Gray"
                 CornerRadius="8"
-                Margin="16, 8, 16, 8"
+                Margin="0, 0, 0, 8"
+                Padding="4"
                 HorizontalAlignment="Stretch">
-            <TextBlock Text="{Binding Title}"
-                       TextAlignment="Center"
-                       FontSize="16" />
+            <TextBlock TextAlignment="Center" FontSize="16">
+                <Run Text="System metrics for " />
+                <Run Text="{Binding Endpoint.Hostname}" />
+            </TextBlock>
         </Border>
 
-        <TextBlock Text="{Binding OsVersion}" />
+        <Grid ColumnDefinitions="Auto, Auto"
+              RowDefinitions="Auto, Auto, Auto, Auto">
+            <Grid.Styles>
+                <Style Selector="TextBlock[(Grid.Column)=1]">
+                    <Setter Property="Margin" Value="32, 0, 0, 0"/>
+                </Style>
+            </Grid.Styles>
+            
+            <TextBlock Text="OsVersion"/>
+            <TextBlock Grid.Column="1" Grid.Row="0"
+                       Text="{Binding Endpoint.OsVersion}"/>
+            
+            <TextBlock Grid.Column="0" Grid.Row="1"
+                       Text="ProcessorCount"/>
+            <TextBlock Grid.Column="1" Grid.Row="1"
+                       Text="{Binding Endpoint.ProcessorCount}"/>
+            
+            <TextBlock Grid.Column="0" Grid.Row="2"
+                       Text="UserDomainName"/>
+            <TextBlock Grid.Column="1" Grid.Row="2"
+                       Text="{Binding Endpoint.UserDomainName}"/>
+            
+            <TextBlock Grid.Column="0" Grid.Row="3"
+                       Text="UserName"/>
+            <TextBlock Grid.Column="1" Grid.Row="3"
+                       Text="{Binding Endpoint.UserName}"/>
+        </Grid>
     </StackPanel>
 </UserControl>

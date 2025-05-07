@@ -6,7 +6,7 @@ namespace CoffeeTime.ViewModels;
 
 public interface IModuleButtonViewModel
 {
-    ObservableCollection<Bitmap> DependencyIcons { get; }
+    ObservableCollection<Bitmap>? DependencyIcons { get; }
     Bitmap Icon { get; }
     bool IsExpanded { get; set; }
     ICommand OpenModule { get; }

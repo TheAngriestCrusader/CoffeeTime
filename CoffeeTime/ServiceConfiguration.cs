@@ -17,9 +17,9 @@ public static class ServiceConfiguration
         services.AddSingleton<HeaderState>();
         services.AddSingleton<MainDisplayState>();
 
-        services.AddSingleton<IModuleViewModelFactoryService, ModuleModuleViewModelFactoryService>();
+        services.AddSingleton<IViewModelFactoryService, ViewModelFactoryService>();
         services.AddSingleton<IMetricsPollingService, MetricsPollingService>();
-        services.AddSingleton<IModuleNavigationService, ModuleNavigationService>();
+        services.AddSingleton<INavigationService, NavigationService>();
 
         //  Auto-register all ViewModels in this assembly as transient
         services.Scan(scan => scan

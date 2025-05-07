@@ -2,7 +2,6 @@
 using CoffeeTime.Modules.EndpointInfo.ViewModels;
 using CoffeeTime.Services;
 using CoffeeTime.States;
-using CoffeeTime.Utilities;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
@@ -23,7 +22,7 @@ public partial class MainWindowViewModel : ViewModelBase
     public MainWindowViewModel(
         HeaderState header,
         MainDisplayState mainDisplay,
-        IModuleNavigationService moduleNavigation)
+        INavigationService navigation)
     {
         // State assignments
         Header = header;
@@ -38,8 +37,8 @@ public partial class MainWindowViewModel : ViewModelBase
         ModuleButtons.Add(
             new ModuleButtonViewModel<EndpointInfoViewModel>(
                 "Endpoint Info",
-                Converter.AvaresToBitmap("avares://CoffeeTime/Assets/EndpointInfoIcon.png"),
-                moduleNavigation));
+                "avares://CoffeeTime/Assets/EndpointInfoIcon.png",
+                navigation));
         UpdatePaneWidgets();
     }
 
