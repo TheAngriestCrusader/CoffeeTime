@@ -9,4 +9,5 @@ public partial class EndpointState : ObservableObject
     [ObservableProperty] private int? _processorCount;
     [ObservableProperty] private string? _userDomainName;
     [ObservableProperty] private string? _userName;
+    [ObservableProperty] private bool? _is64BitOs;
 }

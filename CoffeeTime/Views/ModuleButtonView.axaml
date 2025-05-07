@@ -21,7 +21,7 @@
                    Width="32"
                    Height="32"
                    HorizontalAlignment="Left"
-                   VerticalAlignment="Center" />
+                   VerticalAlignment="Center"/>
 
             <!-- Module dependency icons -->
             <ItemsControl Grid.Column="1"

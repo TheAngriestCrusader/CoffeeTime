@@ -13,5 +13,6 @@ public class MetricsPollingService(EndpointState endpoint) : IMetricsPollingServ
         endpoint.ProcessorCount = Environment.ProcessorCount;
         endpoint.UserDomainName = Environment.UserDomainName;
         endpoint.UserName = Environment.UserName;
+        endpoint.Is64BitOs = Environment.Is64BitOperatingSystem;
     }
 }

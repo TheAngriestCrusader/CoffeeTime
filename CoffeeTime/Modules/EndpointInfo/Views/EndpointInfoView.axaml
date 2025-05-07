@@ -20,7 +20,7 @@
         </Border>
 
         <Grid ColumnDefinitions="Auto, Auto"
-              RowDefinitions="Auto, Auto, Auto, Auto">
+              RowDefinitions="Auto, Auto, Auto, Auto, Auto">
             <Grid.Styles>
                 <Style Selector="TextBlock[(Grid.Column)=1]">
                     <Setter Property="Margin" Value="32, 0, 0, 0"/>
@@ -45,6 +45,11 @@
                        Text="UserName"/>
             <TextBlock Grid.Column="1" Grid.Row="3"
                        Text="{Binding Endpoint.UserName}"/>
+            
+            <TextBlock Grid.Column="0" Grid.Row="4"
+                       Text="Is64BitOs"/>
+            <TextBlock Grid.Column="1" Grid.Row="4"
+                       Text="{Binding Endpoint.Is64BitOs}"/>
         </Grid>
     </StackPanel>
 </UserControl>
