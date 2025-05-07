@@ -14,8 +14,8 @@
                 Padding="4"
                 HorizontalAlignment="Stretch">
             <TextBlock TextAlignment="Center" FontSize="16">
-                <Run Text="System metrics for " />
-                <Run Text="{Binding Endpoint.Hostname}" />
+                <Run Text="System metrics for"/>
+                <Run Text="{Binding Endpoint.Hostname}"/>
             </TextBlock>
         </Border>
 
