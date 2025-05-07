@@ -19,37 +19,23 @@
             </TextBlock>
         </Border>
 
-        <Grid ColumnDefinitions="Auto, Auto"
-              RowDefinitions="Auto, Auto, Auto, Auto, Auto">
+        <Grid ColumnDefinitions="Auto, *">
             <Grid.Styles>
                 <Style Selector="TextBlock[(Grid.Column)=1]">
                     <Setter Property="Margin" Value="32, 0, 0, 0"/>
                 </Style>
             </Grid.Styles>
             
-            <TextBlock Text="OsVersion"/>
-            <TextBlock Grid.Column="1" Grid.Row="0"
-                       Text="{Binding Endpoint.OsVersion}"/>
+            <StackPanel>
+                <TextBlock Text="Is64BitOs"/>
+                <TextBlock Text="OsVersion"/>
+            </StackPanel>
             
-            <TextBlock Grid.Column="0" Grid.Row="1"
-                       Text="ProcessorCount"/>
-            <TextBlock Grid.Column="1" Grid.Row="1"
-                       Text="{Binding Endpoint.ProcessorCount}"/>
-            
-            <TextBlock Grid.Column="0" Grid.Row="2"
-                       Text="UserDomainName"/>
-            <TextBlock Grid.Column="1" Grid.Row="2"
-                       Text="{Binding Endpoint.UserDomainName}"/>
-            
-            <TextBlock Grid.Column="0" Grid.Row="3"
-                       Text="UserName"/>
-            <TextBlock Grid.Column="1" Grid.Row="3"
-                       Text="{Binding Endpoint.UserName}"/>
-            
-            <TextBlock Grid.Column="0" Grid.Row="4"
-                       Text="Is64BitOs"/>
-            <TextBlock Grid.Column="1" Grid.Row="4"
-                       Text="{Binding Endpoint.Is64BitOs}"/>
+            <StackPanel Grid.Column="1"
+                        Margin="32, 0, 0, 0">
+                <TextBlock Text="{Binding Endpoint.Is64BitOs}"/>
+                <TextBlock Text="{Binding Endpoint.OsVersion}"/>
+            </StackPanel>
         </Grid>
     </StackPanel>
 </UserControl>
