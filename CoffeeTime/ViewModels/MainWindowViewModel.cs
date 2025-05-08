@@ -15,7 +15,7 @@ public partial class MainWindowViewModel : ViewModelBase
     // Properties
     [ObservableProperty] private bool _isPaneOpen;
     [ObservableProperty] private MainDisplayState _mainDisplay;
-    [ObservableProperty] private ObservableCollection<IModuleButtonViewModel> _moduleButtons = [];
+    [ObservableProperty] private ObservableCollection<IModuleButtonViewModel> _moduleButtons;
     [ObservableProperty] private double _paneMinimizedWidth;
     [ObservableProperty] private double _paneMaximizedWidth;
     [ObservableProperty] private string? _togglePaneContent;
@@ -36,11 +36,12 @@ public partial class MainWindowViewModel : ViewModelBase
         PaneMaximizedWidth = PaneMinimizedWidth * 5;
 
         // ModuleButtons
-        ModuleButtons.Add(
+        ModuleButtons = [
             new ModuleButtonViewModel<EndpointInfoViewModel>(
                 "Endpoint Info",
                 "avares://CoffeeTime/Assets/EndpointInfoIcon.png",
-                navigation));
+                navigation)
+        ];
         UpdatePaneWidgets();
     }
 
@@ -54,7 +55,6 @@ public partial class MainWindowViewModel : ViewModelBase
     private void UpdatePaneWidgets()
     {
         TogglePaneContent = IsPaneOpen ? "<" : ">";
-
         foreach (var moduleButton in ModuleButtons) moduleButton.IsExpanded = IsPaneOpen;
     }
 }
