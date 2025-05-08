@@ -2,7 +2,7 @@
 
 namespace CoffeeTime.Services;
 
-public interface IMetricsPollingService
+public interface ISystemPollingService
 {
     Task RefreshAsync();
 }

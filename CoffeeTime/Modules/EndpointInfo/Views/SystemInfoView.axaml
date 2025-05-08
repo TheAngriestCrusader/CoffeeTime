@@ -14,14 +14,14 @@
                 Padding="4"
                 HorizontalAlignment="Stretch">
             <TextBlock TextAlignment="Center"
-                       FontSize="16">
+                       FontSize="18">
                 <Run Text="System info for"/>
                 <Run Text="{Binding System.Hostname}"/>
             </TextBlock>
         </Border>
 
         <StackPanel Orientation="Horizontal">
-            <!-- SystemPropertyNames -->
+            <!-- System Property Names -->
             <StackPanel Margin="0, 0, 32, 0">
                 <ItemsControl ItemsSource="{Binding SystemProperties}">
                     <ItemsControl.ItemTemplate>
@@ -32,7 +32,7 @@
                 </ItemsControl>
             </StackPanel>
             
-            <!-- SystemPropertyValues -->
+            <!-- System Property Values -->
             <StackPanel>
                 <ItemsControl ItemsSource="{Binding SystemProperties}">
                     <ItemsControl.ItemTemplate>
@@ -42,6 +42,38 @@
                     </ItemsControl.ItemTemplate>
                 </ItemsControl>
             </StackPanel>
+        </StackPanel>
+        
+        <Separator Margin="0, 8, 0, 8"/>
+        
+        <!-- Drive Info -->
+        <StackPanel>
+            <TextBlock Text="Drives"
+                       TextAlignment="Center"
+                       FontSize="16"/>
+            
+            <ItemsControl ItemsSource="{Binding System.Drives}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal"
+                                    Margin="0, 0, 0, 8">
+                            <StackPanel Margin="0, 0, 32, 0">
+                                <TextBlock Text="Name"/>
+                                <TextBlock Text="VolumeLabel"/>
+                                <TextBlock Text="DriveFormat"/>
+                                <TextBlock Text="DriveType"/>
+                            </StackPanel>
+                            
+                            <StackPanel>
+                                <TextBlock Text="{Binding Name}"/>
+                                <TextBlock Text="{Binding VolumeLabel}"/>
+                                <TextBlock Text="{Binding DriveFormat}"/>
+                                <TextBlock Text="{Binding DriveType}"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
         </StackPanel>
     </StackPanel>
 </UserControl>

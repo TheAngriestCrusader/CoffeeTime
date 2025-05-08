@@ -17,13 +17,13 @@ public partial class SystemInfoViewModel : ViewModelBase
     [ObservableProperty] private string? _title;
     public ObservableCollection<SystemProperty> SystemProperties { get; set; }
 
-    public SystemInfoViewModel(SystemState system, IMetricsPollingService metricsPollingService)
+    public SystemInfoViewModel(SystemState system, ISystemPollingService systemPollingService)
     {
         // Property assignment
         System = system;
 
         // Poll system metrics
-        metricsPollingService.RefreshAsync();
+        systemPollingService.RefreshAsync();
 
         SystemProperties = [
             new SystemProperty("OsVersion", System.OsVersion),
