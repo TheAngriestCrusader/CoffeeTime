@@ -8,13 +8,8 @@ using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace CoffeeTime.Modules.EndpointInfo.ViewModels;
 
-public partial class EndpointInfoViewModel : ViewModelBase
+public partial class SystemInfoViewModel : ViewModelBase
 {
-    // Module properties
-    public static string? RequiredOsName { get; } = null;
-    public static bool Requires64Bit { get; } = false;
-    public static bool RequiresAdministrator { get; } = false;
-    
     // States
     [ObservableProperty] private SystemState _system;
 
@@ -22,7 +17,7 @@ public partial class EndpointInfoViewModel : ViewModelBase
     [ObservableProperty] private string? _title;
     public ObservableCollection<SystemProperty> SystemProperties { get; set; }
 
-    public EndpointInfoViewModel(SystemState system, IMetricsPollingService metricsPollingService)
+    public SystemInfoViewModel(SystemState system, IMetricsPollingService metricsPollingService)
     {
         // Property assignment
         System = system;

@@ -4,8 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="clr-namespace:CoffeeTime.Modules.EndpointInfo.ViewModels"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="CoffeeTime.Modules.EndpointInfo.Views.EndpointInfoView"
-             x:DataType="vm:EndpointInfoViewModel">
+             x:Class="CoffeeTime.Modules.EndpointInfo.Views.SystemInfoView"
+             x:DataType="vm:SystemInfoViewModel">
     <StackPanel Margin="8">
         <Border BorderThickness="1"
                 BorderBrush="Gray"
@@ -15,7 +15,7 @@
                 HorizontalAlignment="Stretch">
             <TextBlock TextAlignment="Center"
                        FontSize="16">
-                <Run Text="System metrics for"/>
+                <Run Text="System info for"/>
                 <Run Text="{Binding System.Hostname}"/>
             </TextBlock>
         </Border>

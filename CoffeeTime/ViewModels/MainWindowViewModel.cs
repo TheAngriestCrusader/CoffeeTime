@@ -37,9 +37,9 @@ public partial class MainWindowViewModel : ViewModelBase
 
         // ModuleButtons
         ModuleButtons = [
-            new ModuleButtonViewModel<EndpointInfoViewModel>(
-                "Endpoint Info",
-                "avares://CoffeeTime/Assets/EndpointInfoIcon.png",
+            new ModuleButtonViewModel<SystemInfoViewModel>(
+                "System Info",
+                "avares://CoffeeTime/Assets/SystemInfoIcon.png",
                 navigation)
         ];
         UpdatePaneWidgets();

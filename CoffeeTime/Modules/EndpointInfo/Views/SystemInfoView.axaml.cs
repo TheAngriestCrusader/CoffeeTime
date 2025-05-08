@@ -2,9 +2,9 @@
 
 namespace CoffeeTime.Modules.EndpointInfo.Views;
 
-public partial class EndpointInfoView : UserControl
+public partial class SystemInfoView : UserControl
 {
-    public EndpointInfoView()
+    public SystemInfoView()
     {
         InitializeComponent();
     }
