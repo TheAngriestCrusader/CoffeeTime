@@ -13,7 +13,8 @@
                 Margin="0, 0, 0, 8"
                 Padding="4"
                 HorizontalAlignment="Stretch">
-            <TextBlock TextAlignment="Center" FontSize="16">
+            <TextBlock TextAlignment="Center"
+                       FontSize="16">
                 <Run Text="System metrics for"/>
                 <Run Text="{Binding Endpoint.Hostname}"/>
             </TextBlock>
@@ -22,19 +23,26 @@
         <Grid ColumnDefinitions="Auto, *">
             <Grid.Styles>
                 <Style Selector="TextBlock[(Grid.Column)=1]">
-                    <Setter Property="Margin" Value="32, 0, 0, 0"/>
+                    <Setter Property="Margin"
+                            Value="32, 0, 0, 0"/>
                 </Style>
             </Grid.Styles>
             
             <StackPanel>
                 <TextBlock Text="Is64BitOs"/>
                 <TextBlock Text="OsVersion"/>
+                <TextBlock Text="ProcessorCount"/>
+                <TextBlock Text="UserDomainName"/>
+                <TextBlock Text="UserName"/>
             </StackPanel>
             
             <StackPanel Grid.Column="1"
                         Margin="32, 0, 0, 0">
                 <TextBlock Text="{Binding Endpoint.Is64BitOs}"/>
                 <TextBlock Text="{Binding Endpoint.OsVersion}"/>
+                <TextBlock Text="{Binding Endpoint.ProcessorCount}"/>
+                <TextBlock Text="{Binding Endpoint.UserDomainName}"/>
+                <TextBlock Text="{Binding Endpoint.UserName}"/>
             </StackPanel>
         </Grid>
     </StackPanel>
