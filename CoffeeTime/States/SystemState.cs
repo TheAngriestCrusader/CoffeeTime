@@ -2,7 +2,7 @@
 
 namespace CoffeeTime.States;
 
-public partial class EndpointState : ObservableObject
+public partial class SystemState : ObservableObject
 {
     [ObservableProperty] private string? _hostname;
     [ObservableProperty] private string? _osVersion;

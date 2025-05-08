@@ -13,7 +13,7 @@ public static class ServiceConfiguration
         var services = new ServiceCollection();
 
         //  Application-wide states
-        services.AddSingleton<EndpointState>();
+        services.AddSingleton<SystemState>();
         services.AddSingleton<HeaderState>();
         services.AddSingleton<MainDisplayState>();
 

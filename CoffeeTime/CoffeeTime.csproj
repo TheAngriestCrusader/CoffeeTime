@@ -12,7 +12,6 @@
         <Folder Include="Interfaces\" />
         <Folder Include="Models\"/>
         <AvaloniaResource Include="Assets\**"/>
-        <Folder Include="Modules\EndpointInfo\Models\"/>
     </ItemGroup>
 
     <ItemGroup>
