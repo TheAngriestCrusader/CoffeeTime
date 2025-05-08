@@ -17,6 +17,7 @@ public partial class MainWindowViewModel : ViewModelBase
     [ObservableProperty] private MainDisplayState _mainDisplay;
     [ObservableProperty] private ObservableCollection<IModuleButtonViewModel> _moduleButtons = [];
     [ObservableProperty] private double _paneMinimizedWidth;
+    [ObservableProperty] private double _paneMaximizedWidth;
     [ObservableProperty] private string? _togglePaneContent;
 
     public MainWindowViewModel(
@@ -30,8 +31,9 @@ public partial class MainWindowViewModel : ViewModelBase
 
         // Property assignments
         Header.Text = "CoffeeTime";
-        IsPaneOpen = true;
+        IsPaneOpen = false;
         PaneMinimizedWidth = 48;
+        PaneMaximizedWidth = PaneMinimizedWidth * 5;
 
         // ModuleButtons
         ModuleButtons.Add(
