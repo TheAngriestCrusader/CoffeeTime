@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Threading.Tasks;
-using CoffeeTime.Models;
+using CoffeeTime.Modules.EndpointInfo.Models;
 using CoffeeTime.States;
 
 namespace CoffeeTime.Services;
@@ -17,22 +19,26 @@ public class SystemPollingService(SystemState system) : ISystemPollingService
         system.UserName = Environment.UserName;
         system.Is64BitOs = Environment.Is64BitOperatingSystem;
 
-        var drives = await Task.Run(() => DriveInfo.GetDrives());
-        foreach (var drive in drives)
+        // Clear and populate the Drives collection with DriveInfoModel
+        var drives = await Task.Run(DriveInfo.GetDrives);
+        if (!drives.Any())
         {
-            var model = new DriveInfoModel
+            Debug.WriteLine("No drives found.");
+        }
+
+        system.Drives.Clear();
+
+        foreach (var drive in drives.Where(driveInfo => driveInfo.IsReady))
+        {
+            system.Drives.Add(new DriveInfoModel
             {
                 Name = drive.Name,
+                VolumeLabel = drive.VolumeLabel,
+                DriveType = drive.DriveType.ToString(),
                 DriveFormat = drive.DriveFormat,
-                DriveType = drive.DriveType.ToString()
-            };
-
-            if (drive.IsReady)
-            {
-                model.VolumeLabel = drive.VolumeLabel;
-            }
-            
-            system.Drives.Add(model);
+                TotalSize = drive.TotalSize,
+                TotalFreeSpace = drive.TotalFreeSpace
+            });
         }
     }
 }

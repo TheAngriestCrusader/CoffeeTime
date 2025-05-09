@@ -1,5 +1,5 @@
-﻿using System.Collections.ObjectModel;
-using System.ComponentModel;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using CoffeeTime.Modules.EndpointInfo.Models;
 using CoffeeTime.Services;
 using CoffeeTime.States;
@@ -15,7 +15,8 @@ public partial class SystemInfoViewModel : ViewModelBase
 
     // Properties
     [ObservableProperty] private string? _title;
-    public ObservableCollection<SystemProperty> SystemProperties { get; set; }
+    public ObservableCollection<KeyValuePair<string, string>> SystemProperties { get; set; }
+    public ObservableCollection<DriveInfoModel> Drives { get; set; }
 
     public SystemInfoViewModel(SystemState system, ISystemPollingService systemPollingService)
     {
@@ -26,11 +27,25 @@ public partial class SystemInfoViewModel : ViewModelBase
         systemPollingService.RefreshAsync();
 
         SystemProperties = [
-            new SystemProperty("OsVersion", System.OsVersion),
-            new SystemProperty("Is64BitOs", System.Is64BitOs == true ? "Yes" : "No"),
-            new SystemProperty("ProcessorCount", System.ProcessorCount.ToString()),
-            new SystemProperty("UserDomainName", System.UserDomainName),
-            new SystemProperty("UserName", System.UserName)
+            new ("OsVersion", System.OsVersion),
+            new ("Is64BitOs", System.Is64BitOs == true ? "Yes" : "No"),
+            new ("ProcessorCount", System.ProcessorCount.ToString()),
+            new ("UserDomainName", System.UserDomainName),
+            new ("UserName", System.UserName)
         ];
+
+        Drives = [];
+        foreach (var drive in system.Drives)
+        {
+            Drives.Add(new DriveInfoModel
+            {
+                Name = drive.Name,
+                VolumeLabel = drive.VolumeLabel,
+                DriveType = drive.DriveType.ToString(),
+                DriveFormat = drive.DriveFormat,
+                TotalSize = drive.TotalSize,
+                TotalFreeSpace = drive.TotalFreeSpace
+            });
+        }
     }
 }

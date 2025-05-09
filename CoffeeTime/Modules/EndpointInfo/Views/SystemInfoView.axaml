@@ -20,29 +20,18 @@
             </TextBlock>
         </Border>
 
-        <StackPanel Orientation="Horizontal">
-            <!-- System Property Names -->
-            <StackPanel Margin="0, 0, 32, 0">
-                <ItemsControl ItemsSource="{Binding SystemProperties}">
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding Name}"/>
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                </ItemsControl>
-            </StackPanel>
-            
-            <!-- System Property Values -->
-            <StackPanel>
-                <ItemsControl ItemsSource="{Binding SystemProperties}">
-                    <ItemsControl.ItemTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding Value}"/>
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                </ItemsControl>
-            </StackPanel>
-        </StackPanel>
+        <!-- System Properties -->
+        <ItemsControl ItemsSource="{Binding SystemProperties}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Key}"
+                                   Width="160"/>
+                        <TextBlock Text="{Binding Value}"/>
+                    </StackPanel>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
         
         <Separator Margin="0, 8, 0, 8"/>
         
@@ -55,20 +44,14 @@
             <ItemsControl ItemsSource="{Binding System.Drives}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel Orientation="Horizontal"
-                                    Margin="0, 0, 0, 8">
-                            <StackPanel Margin="0, 0, 32, 0">
-                                <TextBlock Text="Name"/>
-                                <TextBlock Text="VolumeLabel"/>
-                                <TextBlock Text="DriveFormat"/>
-                                <TextBlock Text="DriveType"/>
-                            </StackPanel>
+                        <StackPanel Width="256">
+                            <TextBlock>
+                                <Run Text="{Binding Name}"/><Run Text="{Binding VolumeLabel}"/>
+                            </TextBlock>
                             
-                            <StackPanel>
-                                <TextBlock Text="{Binding Name}"/>
-                                <TextBlock Text="{Binding VolumeLabel}"/>
-                                <TextBlock Text="{Binding DriveFormat}"/>
-                                <TextBlock Text="{Binding DriveType}"/>
+                            <StackPanel Orientation="Horizontal">
+                                <ProgressBar Maximum="{Binding TotalSize}"
+                                             Value="{Binding TotalUsedSpace}"/>
                             </StackPanel>
                         </StackPanel>
                     </DataTemplate>
