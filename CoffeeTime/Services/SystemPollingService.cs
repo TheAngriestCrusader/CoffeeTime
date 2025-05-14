@@ -17,11 +17,11 @@ public class SystemPollingService(SystemState system) : ISystemPollingService
         system.UserDomainName = Environment.UserDomainName;
         system.UserName = Environment.UserName;
 
-        var drives = await Task.Run(DriveInfo.GetDrives);
-        if (!(drives.Length > 0))
+        var drives = await Task.Run(() =>
         {
-            Debug.WriteLine("No drives found.");
-        }
+            return DriveInfo.GetDrives().Where(driveInfo => driveInfo.IsReady).ToArray();
+        });
+        if (!(drives.Length > 0)) return;
 
         system.Drives.Clear();
 

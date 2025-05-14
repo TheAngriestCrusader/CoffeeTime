@@ -27,6 +27,6 @@ public partial class SystemState : ObservableObject
         });
 
         HardwareInfoIsLoading = false;
-        HardwareInfoIsLoaded?.Invoke();Console.WriteLine(HardwareInfo.OperatingSystem);
+        HardwareInfoIsLoaded?.Invoke();
     }
 }
