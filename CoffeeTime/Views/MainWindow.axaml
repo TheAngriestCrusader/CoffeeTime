@@ -9,17 +9,11 @@
         Icon="/Assets/CoffeeTimeIcon.ico"
         Title="CoffeeTime"
         Width="640" Height="360" MinWidth="640" MinHeight="360">
-    <Window.Styles>
-        <Style Selector="Separator">
-            <Setter Property="Margin" Value="0" />
-        </Style>
-    </Window.Styles>
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
         <TextBlock Grid.Row="0"
@@ -27,42 +21,46 @@
                    TextAlignment="Center"
                    FontSize="24"
                    Margin="4"
-                   VerticalAlignment="Center" />
+                   VerticalAlignment="Center"/>
 
-        <Separator Grid.Row="1" />
+        <Border Grid.Row="1"
+                BorderBrush="{DynamicResource SystemAccentColor}"
+                BorderThickness="0 1 0 0">
+            <SplitView DisplayMode="CompactInline"
+                       IsPaneOpen="{Binding IsPaneOpen}"
+                       CompactPaneLength="{Binding PaneMinimizedWidth}"
+                       OpenPaneLength="{Binding PaneMaximizedWidth}">
+                <SplitView.Pane>
+                    <StackPanel>
+                        <Grid>
+                            <TextBlock Text="Modules" TextAlignment="Center"
+                                       IsVisible="{Binding IsPaneOpen}"
+                                       VerticalAlignment="Center" />
 
-        <SplitView Grid.Row="2"
-                   DisplayMode="CompactInline"
-                   IsPaneOpen="{Binding IsPaneOpen}"
-                   CompactPaneLength="{Binding PaneMinimizedWidth}"
-                   OpenPaneLength="{Binding PaneMaximizedWidth}">
-            <SplitView.Pane>
-                <StackPanel>
-                    <Grid>
-                        <TextBlock Text="Modules" TextAlignment="Center"
-                                   IsVisible="{Binding IsPaneOpen}"
-                                   VerticalAlignment="Center" />
+                            <Button Command="{Binding TogglePaneCommand}"
+                                    Content="{Binding TogglePaneContent}"
+                                    Width="{Binding PaneMinimizedWidth}"
+                                    Height="{Binding PaneMinimizedWidth}"
+                                    HorizontalAlignment="Right" VerticalAlignment="Center" />
+                        </Grid>
+                        
+                        <Separator Margin="0 2"/>
 
-                        <Button Command="{Binding TogglePaneCommand}"
-                                Content="{Binding TogglePaneContent}"
-                                Width="{Binding PaneMinimizedWidth}"
-                                Height="{Binding PaneMinimizedWidth}"
-                                HorizontalAlignment="Right" VerticalAlignment="Center" />
-                    </Grid>
+                        <ScrollViewer>
+                            <ItemsControl ItemsSource="{Binding ModuleButtons}" />
+                        </ScrollViewer>
+                    </StackPanel>
+                </SplitView.Pane>
 
-                    <Separator Margin="0, 2, 0, 2" />
-
-                    <ScrollViewer>
-                        <ItemsControl ItemsSource="{Binding ModuleButtons}" />
-                    </ScrollViewer>
-                </StackPanel>
-            </SplitView.Pane>
-
-            <SplitView.Content>
-                <ScrollViewer HorizontalScrollBarVisibility="Auto">
-                    <ContentControl Content="{Binding MainDisplay.CurrentControl}" />
-                </ScrollViewer>
-            </SplitView.Content>
-        </SplitView>
+                <SplitView.Content>
+                    <Border BorderBrush="{DynamicResource SystemAccentColor}"
+                            BorderThickness="1 0 0 0">
+                        <ScrollViewer HorizontalScrollBarVisibility="Auto">
+                            <ContentControl Content="{Binding MainDisplay.CurrentControl}" />
+                        </ScrollViewer>
+                    </Border>
+                </SplitView.Content>
+            </SplitView>
+        </Border>
     </Grid>
 </Window>

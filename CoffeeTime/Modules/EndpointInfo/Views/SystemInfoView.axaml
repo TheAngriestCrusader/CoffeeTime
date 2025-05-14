@@ -6,22 +6,19 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="CoffeeTime.Modules.EndpointInfo.Views.SystemInfoView"
              x:DataType="vm:SystemInfoViewModel">
-    <StackPanel Margin="8">
-        <Border BorderBrush="{DynamicResource SystemAccentColor}"
-                BorderThickness="{DynamicResource TextControlBorderThemeThickness}"
-                CornerRadius="{DynamicResource ControlCornerRadius}"
-                Margin="{DynamicResource TextControlMarginThemeThickness}"
-                Padding="{DynamicResource TextControlThemePadding}"
-                HorizontalAlignment="Stretch">
-            <TextBlock TextAlignment="Center"
-                       FontSize="18">
-                <Run Text="System info for"/>
-                <Run Text="{Binding System.Hostname}"/>
-            </TextBlock>
-        </Border>
+    <StackPanel>
+        <TextBlock TextAlignment="Center"
+                   Margin="0 8"
+                   FontSize="18">
+            <Run Text="System info for"/>
+            <Run Text="{Binding System.Hostname}"/>
+        </TextBlock>
+        
+        <Separator Margin="0 8"/>
 
         <!-- System Properties -->
-        <ItemsControl ItemsSource="{Binding SystemProperties}">
+        <ItemsControl ItemsSource="{Binding SystemProperties}"
+                      Margin="8 0">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
@@ -33,14 +30,15 @@
             </ItemsControl.ItemTemplate>
         </ItemsControl>
         
-        <Separator Margin="0, 8, 0, 8"/>
+        <Separator Margin="0 8"/>
         
         <!-- Drive Info -->
         <StackPanel HorizontalAlignment="Center"
                     Width="512">
-            <TextBlock Text="Drives"
+            <TextBlock Margin="8"
+                       Text="Drives"
                        TextAlignment="Center"
-                       FontSize="16" />
+                       FontSize="18"/>
             
             <ItemsControl ItemsSource="{Binding System.Drives}">
                 <ItemsControl.ItemsPanel>

@@ -32,11 +32,12 @@ public partial class MainWindowViewModel : ViewModelBase
         // Property assignments
         Header.Text = "CoffeeTime";
         IsPaneOpen = false;
-        PaneMinimizedWidth = 48;
+        PaneMinimizedWidth = 36;
         PaneMaximizedWidth = PaneMinimizedWidth * 5;
 
         // ModuleButtons
-        ModuleButtons = [
+        ModuleButtons =
+        [
             new ModuleButtonViewModel<SystemInfoViewModel>(
                 "System Info",
                 "avares://CoffeeTime/Assets/SystemInfoIcon.png",

@@ -7,14 +7,10 @@
              x:Class="CoffeeTime.Views.ModuleButtonView"
              x:DataType="vm:IModuleButtonViewModel">
     <Button Command="{Binding OpenModule}"
-            HorizontalAlignment="Stretch">
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="Auto" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-
+            Padding="0"
+            HorizontalAlignment="Stretch"
+            HorizontalContentAlignment="Stretch">
+        <Grid ColumnDefinitions="Auto Auto *">
             <!-- Module icon -->
             <Image Source="{Binding Icon}"
                    Margin="0, 0, 16, 0"
@@ -26,12 +22,13 @@
             <!-- Module dependency icons -->
             <ItemsControl Grid.Column="1"
                           ItemsSource="{Binding DependencyIcons}"
-                          IsVisible="{Binding IsExpanded}">
+                          IsVisible="{Binding IsExpanded}"
+                          Margin="4 0"
+                          HorizontalAlignment="Left"
+                          VerticalAlignment="Center">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel Orientation="Vertical"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Center"
                                    MaxHeight="32"
                                    ItemWidth="16"
                                    ItemHeight="16" />
@@ -42,7 +39,7 @@
                     <DataTemplate>
                         <Image Source="{Binding}"
                                Width="16"
-                               Height="16" />
+                               Height="16"/>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
