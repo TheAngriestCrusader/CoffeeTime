@@ -32,7 +32,7 @@ public partial class MainWindowViewModel : ViewModelBase
 
         // Property assignments
         Header.Text = "CoffeeTime";
-        IsPaneOpen = false;
+        IsPaneOpen = true;
         PaneMinimizedWidth = 36;
         PaneMaximizedWidth = PaneMinimizedWidth * 5;
 

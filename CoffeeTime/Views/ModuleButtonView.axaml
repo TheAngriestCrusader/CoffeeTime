@@ -44,6 +44,7 @@
 
             <!-- Module title -->
             <TextBlock Grid.Column="2"
+                       FontSize="12"
                        Text="{Binding Title}"
                        TextAlignment="Center"
                        Margin="0 0 4 0"
