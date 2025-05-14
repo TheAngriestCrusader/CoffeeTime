@@ -12,9 +12,10 @@
 
     <Grid RowDefinitions="Auto, *">
         <TextBlock Grid.Row="0"
+                   FontSize="24"
+                   FontWeight="Bold"
                    Text="{Binding Header.Text}"
                    TextAlignment="Center"
-                   FontSize="24"
                    Margin="4"
                    VerticalAlignment="Center"/>
 
@@ -50,9 +51,7 @@
                 <SplitView.Content>
                     <Border BorderBrush="{DynamicResource SystemAccentColor}"
                             BorderThickness="1 0 0 0">
-                        <ScrollViewer HorizontalScrollBarVisibility="Auto">
-                            <ContentControl Content="{Binding MainDisplay.CurrentControl}" />
-                        </ScrollViewer>
+                        <ContentControl Content="{Binding MainDisplay.CurrentControl}"/>
                     </Border>
                 </SplitView.Content>
             </SplitView>

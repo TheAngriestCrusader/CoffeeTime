@@ -26,8 +26,8 @@ public partial class SystemInfoViewModel : ViewModelBase
         systemPollingService.RefreshAsync();
 
         SystemProperties = [
-            new ("OsVersion", System.OsVersion),
             new ("Is64BitOs", System.Is64BitOs ? "Yes" : "No"),
+            new ("OsVersion", System.OsVersion),
             new ("ProcessorCount", System.ProcessorCount.ToString()),
             new ("UserDomainName", System.UserDomainName),
             new ("UserName", System.UserName)

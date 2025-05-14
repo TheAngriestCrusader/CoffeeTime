@@ -13,7 +13,6 @@
         <Grid ColumnDefinitions="Auto Auto *">
             <!-- Module icon -->
             <Image Source="{Binding Icon}"
-                   Margin="0, 0, 16, 0"
                    Width="32"
                    Height="32"
                    HorizontalAlignment="Left"
@@ -23,15 +22,14 @@
             <ItemsControl Grid.Column="1"
                           ItemsSource="{Binding DependencyIcons}"
                           IsVisible="{Binding IsExpanded}"
-                          Margin="4 0"
-                          HorizontalAlignment="Left"
                           VerticalAlignment="Center">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <WrapPanel Orientation="Vertical"
                                    MaxHeight="32"
                                    ItemWidth="16"
-                                   ItemHeight="16" />
+                                   ItemHeight="16"
+                                   Margin="4 0"/>
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
 
@@ -48,6 +46,7 @@
             <TextBlock Grid.Column="2"
                        Text="{Binding Title}"
                        TextAlignment="Center"
+                       Margin="0 0 4 0"
                        HorizontalAlignment="Right"
                        VerticalAlignment="Center"
                        IsVisible="{Binding IsExpanded}" />

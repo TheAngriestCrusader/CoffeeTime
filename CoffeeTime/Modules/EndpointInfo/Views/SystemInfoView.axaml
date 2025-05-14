@@ -6,76 +6,86 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="CoffeeTime.Modules.EndpointInfo.Views.SystemInfoView"
              x:DataType="vm:SystemInfoViewModel">
-    <StackPanel>
-        <TextBlock TextAlignment="Center"
-                   Margin="0 8"
-                   FontSize="18">
-            <Run Text="System info for"/>
-            <Run Text="{Binding System.Hostname}"/>
-        </TextBlock>
-        
-        <Separator Margin="0 8"/>
-
-        <!-- System Properties -->
-        <ItemsControl ItemsSource="{Binding SystemProperties}"
-                      Margin="8 0">
-            <ItemsControl.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding Key}"
-                                   Width="160"/>
-                        <TextBlock Text="{Binding Value}"/>
-                    </StackPanel>
-                </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
-        
-        <Separator Margin="0 8"/>
-        
-        <!-- Drive Info -->
-        <StackPanel HorizontalAlignment="Center"
-                    Width="512">
-            <TextBlock Margin="8"
-                       Text="Drives"
+    <ScrollViewer>
+        <StackPanel>
+            <TextBlock FontSize="18"
                        TextAlignment="Center"
-                       FontSize="18"/>
+                       Margin="0 8 0 0">
+                <Run Text="System info for"/>
+                <Run Text="{Binding System.Hostname}"/>
+            </TextBlock>
             
-            <ItemsControl ItemsSource="{Binding System.Drives}">
-                <ItemsControl.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <WrapPanel HorizontalAlignment="Center"/>
-                    </ItemsPanelTemplate>
-                </ItemsControl.ItemsPanel>
+            <!-- System Properties -->
+            <Separator Margin="0 8"/>
 
-                <ItemsControl.ItemTemplate>
-                    <DataTemplate>
-                        <Border BorderBrush="{DynamicResource SystemAccentColor}"
-                                BorderThickness="{DynamicResource TextControlBorderThemeThickness}"
-                                CornerRadius="{DynamicResource ControlCornerRadius}"
-                                Margin="4"
-                                Padding="4">
-                            <StackPanel>
-                                <TextBlock>
-                                    <Run Text="{Binding Name}"/><Run Text="{Binding VolumeLabel}"/>
-                                </TextBlock>
-                                
-                                <ProgressBar Maximum="{Binding TotalSize}"
-                                             Value="{Binding TotalUsedSpace}"/>
-                                
-                                <TextBlock>
-                                    <Run Text="Format:"/>
-                                    <Run Text="{Binding DriveFormat}"/>
-                                </TextBlock>
-                                
-                                <TextBlock>
-                                    <Run Text="Type:"/>
-                                    <Run Text="{Binding DriveType}"/>
-                                </TextBlock>
-                            </StackPanel>
-                        </Border>
-                    </DataTemplate>
-                </ItemsControl.ItemTemplate>
-            </ItemsControl>
+            <Grid ColumnDefinitions="Auto *" Margin="8 0">
+                <!-- Keys -->
+                <ItemsControl Grid.Column="0"
+                              ItemsSource="{Binding SystemProperties}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Key}"/>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+
+                <!-- Values -->
+                <ItemsControl Grid.Column="1"
+                              ItemsSource="{Binding SystemProperties}">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Value}" Margin="16 0" />
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </Grid>
+            
+            <!-- Drive Info -->
+            <Separator Margin="0 8"/>
+            
+            <StackPanel HorizontalAlignment="Center">
+                <TextBlock Margin="8"
+                           Text="Drives"
+                           TextAlignment="Center"
+                           FontSize="18"/>
+                
+                <ItemsControl ItemsSource="{Binding System.Drives}">
+                    <ItemsControl.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel HorizontalAlignment="Center"/>
+                        </ItemsPanelTemplate>
+                    </ItemsControl.ItemsPanel>
+
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                            <Border BorderBrush="{DynamicResource SystemAccentColor}"
+                                    BorderThickness="{DynamicResource TextControlBorderThemeThickness}"
+                                    CornerRadius="{DynamicResource ControlCornerRadius}"
+                                    Margin="4"
+                                    Padding="4">
+                                <StackPanel>
+                                    <TextBlock>
+                                        <Run Text="{Binding Name}"/><Run Text="{Binding VolumeLabel}"/>
+                                    </TextBlock>
+                                    
+                                    <ProgressBar Maximum="{Binding TotalSize}"
+                                                 Value="{Binding TotalUsedSpace}"/>
+                                    
+                                    <TextBlock>
+                                        <Run Text="Format:"/>
+                                        <Run Text="{Binding DriveFormat}"/>
+                                    </TextBlock>
+                                    
+                                    <TextBlock>
+                                        <Run Text="Type:"/>
+                                        <Run Text="{Binding DriveType}"/>
+                                    </TextBlock>
+                                </StackPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </StackPanel>
         </StackPanel>
-    </StackPanel>
+    </ScrollViewer>
 </UserControl>

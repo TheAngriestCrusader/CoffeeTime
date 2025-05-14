@@ -17,5 +17,10 @@
     
     <Application.Styles>
         <sty:FluentAvaloniaTheme PreferUserAccentColor="True"/>
+        
+        <Style Selector=":is(TopLevel)">
+            <Setter Property="FontFamily"
+                    Value="avares://CoffeeTime/Assets/Fonts/JetBrains Mono/fonts/ttf/JetBrainsMono-Regular.ttf#JetBrains Mono"/>
+        </Style>
     </Application.Styles>
 </Application>
