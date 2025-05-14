@@ -1,5 +1,5 @@
 ﻿using System.Collections.ObjectModel;
-using CoffeeTime.Modules.EndpointInfo.ViewModels;
+using CoffeeTime.Modules.SystemInfo.ViewModels;
 using CoffeeTime.Services;
 using CoffeeTime.States;
 using CommunityToolkit.Mvvm.ComponentModel;

@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using CoffeeTime.Modules.EndpointInfo.Models;
+using CoffeeTime.Modules.SystemInfo.Models;
 using CoffeeTime.States;
 
 namespace CoffeeTime.Services;
@@ -12,14 +12,11 @@ public class SystemPollingService(SystemState system) : ISystemPollingService
 {
     public async Task RefreshAsync()
     {
+        system.RefreshHardwareInfo();
         system.Hostname = Environment.MachineName;
-        system.OsVersion = Environment.OSVersion.ToString();
-        system.ProcessorCount = Environment.ProcessorCount;
         system.UserDomainName = Environment.UserDomainName;
         system.UserName = Environment.UserName;
-        system.Is64BitOs = Environment.Is64BitOperatingSystem;
 
-        // Clear and populate the Drives collection with DriveInfoModel
         var drives = await Task.Run(DriveInfo.GetDrives);
         if (!(drives.Length > 0))
         {

@@ -1,6 +1,6 @@
 ﻿using Avalonia.Controls;
 
-namespace CoffeeTime.Modules.EndpointInfo.Views;
+namespace CoffeeTime.Modules.SystemInfo.Views;
 
 public partial class SystemInfoView : UserControl
 {

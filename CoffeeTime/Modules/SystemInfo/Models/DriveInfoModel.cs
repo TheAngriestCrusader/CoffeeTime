@@ -1,4 +1,4 @@
-﻿namespace CoffeeTime.Modules.EndpointInfo.Models;
+﻿namespace CoffeeTime.Modules.SystemInfo.Models;
 
 public class DriveInfoModel
 {
