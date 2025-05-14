@@ -61,6 +61,16 @@
                                 
                                 <ProgressBar Maximum="{Binding TotalSize}"
                                              Value="{Binding TotalUsedSpace}"/>
+                                
+                                <TextBlock>
+                                    <Run Text="Format:"/>
+                                    <Run Text="{Binding DriveFormat}"/>
+                                </TextBlock>
+                                
+                                <TextBlock>
+                                    <Run Text="Type:"/>
+                                    <Run Text="{Binding DriveType}"/>
+                                </TextBlock>
                             </StackPanel>
                         </Border>
                     </DataTemplate>

@@ -10,12 +10,7 @@
         Title="CoffeeTime"
         Width="640" Height="360" MinWidth="640" MinHeight="360">
 
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-
+    <Grid RowDefinitions="Auto, *">
         <TextBlock Grid.Row="0"
                    Text="{Binding Header.Text}"
                    TextAlignment="Center"

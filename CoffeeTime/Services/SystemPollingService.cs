@@ -21,7 +21,7 @@ public class SystemPollingService(SystemState system) : ISystemPollingService
 
         // Clear and populate the Drives collection with DriveInfoModel
         var drives = await Task.Run(DriveInfo.GetDrives);
-        if (!drives.Any())
+        if (!(drives.Length > 0))
         {
             Debug.WriteLine("No drives found.");
         }
