@@ -7,11 +7,11 @@
              x:Class="CoffeeTime.Modules.EndpointInfo.Views.SystemInfoView"
              x:DataType="vm:SystemInfoViewModel">
     <StackPanel Margin="8">
-        <Border BorderThickness="1"
-                BorderBrush="Gray"
-                CornerRadius="8"
-                Margin="0, 0, 0, 8"
-                Padding="4"
+        <Border BorderBrush="{DynamicResource SystemAccentColor}"
+                BorderThickness="{DynamicResource TextControlBorderThemeThickness}"
+                CornerRadius="{DynamicResource ControlCornerRadius}"
+                Margin="{DynamicResource TextControlMarginThemeThickness}"
+                Padding="{DynamicResource TextControlThemePadding}"
                 HorizontalAlignment="Stretch">
             <TextBlock TextAlignment="Center"
                        FontSize="18">
@@ -36,24 +36,35 @@
         <Separator Margin="0, 8, 0, 8"/>
         
         <!-- Drive Info -->
-        <StackPanel>
+        <StackPanel HorizontalAlignment="Center"
+                    Width="512">
             <TextBlock Text="Drives"
                        TextAlignment="Center"
-                       FontSize="16"/>
+                       FontSize="16" />
             
             <ItemsControl ItemsSource="{Binding System.Drives}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel HorizontalAlignment="Center"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <StackPanel Width="256">
-                            <TextBlock>
-                                <Run Text="{Binding Name}"/><Run Text="{Binding VolumeLabel}"/>
-                            </TextBlock>
-                            
-                            <StackPanel Orientation="Horizontal">
+                        <Border BorderBrush="{DynamicResource SystemAccentColor}"
+                                BorderThickness="{DynamicResource TextControlBorderThemeThickness}"
+                                CornerRadius="{DynamicResource ControlCornerRadius}"
+                                Margin="4"
+                                Padding="4">
+                            <StackPanel>
+                                <TextBlock>
+                                    <Run Text="{Binding Name}"/><Run Text="{Binding VolumeLabel}"/>
+                                </TextBlock>
+                                
                                 <ProgressBar Maximum="{Binding TotalSize}"
                                              Value="{Binding TotalUsedSpace}"/>
                             </StackPanel>
-                        </StackPanel>
+                        </Border>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>

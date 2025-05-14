@@ -9,5 +9,4 @@ public class DriveInfoModel
     public required long TotalSize { get; set; }
     public required long TotalFreeSpace { get; set; }
     public double TotalUsedSpace => TotalSize - TotalFreeSpace;
-    public int TotalUsedSpacePercent => (int)(TotalUsedSpace / TotalSize * 100);
 }
