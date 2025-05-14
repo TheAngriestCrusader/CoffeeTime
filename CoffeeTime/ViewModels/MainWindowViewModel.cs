@@ -44,6 +44,7 @@ public partial class MainWindowViewModel : ViewModelBase
                 navigation)
         ];
         UpdatePaneWidgets();
+        navigation.Navigate<SystemInfoViewModel>();
     }
 
     [RelayCommand]
