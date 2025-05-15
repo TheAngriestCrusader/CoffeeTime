@@ -16,8 +16,10 @@ public partial class SystemInfoViewModel : ViewModelBase
     [ObservableProperty] private string? _title;
     [ObservableProperty] private ObservableCollection<KeyValuePair<string, string>> _systemProperties = [];
 
-    public SystemInfoViewModel(SystemState system, ISystemPollingService systemPollingService)
+    public SystemInfoViewModel(SystemState system, HeaderState header, ISystemPollingService systemPollingService)
     {
+        header.Text = "System Info";
+        
         // Property assignment
         System = system;
 
