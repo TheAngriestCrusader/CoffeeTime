@@ -25,6 +25,7 @@ public partial class SystemInfoViewModel : ViewModelBase
 
         // Poll system metrics
         systemPollingService.RefreshAsync();
+        UpdateSystemProperties();
         System.HardwareInfoIsLoaded += UpdateSystemProperties;
     }
 

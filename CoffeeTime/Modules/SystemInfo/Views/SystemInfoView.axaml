@@ -9,22 +9,26 @@
     <ScrollViewer Padding="12">
         <StackPanel HorizontalAlignment="Stretch"
                     VerticalAlignment="Stretch">
-            <TextBlock FontSize="12"
-                       FontStyle="Italic"
-                       Text="Please wait..."
-                       IsVisible="{Binding System.HardwareInfoIsLoading}"/>
             
-            <StackPanel IsVisible="{Binding !System.HardwareInfoIsLoading}">
-                <Grid ColumnDefinitions="* Auto">
-                    <TextBlock Grid.Column="0"
-                               FontSize="18"
-                               Text="{Binding System.Hostname}"
-                               TextAlignment="Center"
-                               VerticalAlignment="Center"/>
-                </Grid>
+            
+            <StackPanel>
+                <TextBlock Grid.Column="0"
+                           FontSize="18"
+                           Text="{Binding System.Hostname}"
+                           TextAlignment="Center"
+                           VerticalAlignment="Center"
+                           IsVisible="{Binding !System.HardwareInfoIsLoading}"/>
+                
+                <TextBlock FontSize="18"
+                           TextAlignment="Center"
+                           VerticalAlignment="Center"
+                           IsVisible="{Binding System.HardwareInfoIsLoading}">
+                    <Run Text="{Binding System.Hostname}"/>
+                    <Run Text="(Refreshing Info)"/>
+                </TextBlock>
                 
                 <!-- System Properties -->
-                <Separator Margin="0 8"/>
+                <Separator Margin="0 8 0 0"/>
 
                 <ScrollViewer HorizontalScrollBarVisibility="Auto">
                     <Grid ColumnDefinitions="Auto *" Margin="0 12">
