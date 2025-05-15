@@ -21,6 +21,7 @@
         <Folder Include="Models\" />
         <Folder Include="Modules\PathWatchers\Interfaces\" />
         <Folder Include="Modules\PathWatchers\Models\" />
+        <Folder Include="Modules\PathWatchers\Services\" />
     </ItemGroup>
 
     <ItemGroup>

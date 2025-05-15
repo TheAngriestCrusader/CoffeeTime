@@ -9,6 +9,7 @@
     <StackPanel>
         <Grid ColumnDefinitions="* Auto">
             <TextBox Grid.Column="0"
+                     FontSize="12"
                      Text="{Binding NewPath, Mode=TwoWay}"
                      Watermark="New path here..."
                      Margin="4"/>
@@ -17,7 +18,7 @@
                     Command="{Binding AddPathWatcher}"
                     Content="+"
                     VerticalAlignment="Center"
-                    Margin="4"/>
+                    Margin="0 4 4 4"/>
         </Grid>
         
         <ScrollViewer>
