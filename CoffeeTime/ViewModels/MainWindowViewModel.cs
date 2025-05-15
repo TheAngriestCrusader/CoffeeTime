@@ -1,5 +1,5 @@
 ﻿using System.Collections.ObjectModel;
-using CoffeeTime.Modules.PathWatcher.ViewModels;
+using CoffeeTime.Modules.PathWatchers.ViewModels;
 using CoffeeTime.Modules.SystemInfo.ViewModels;
 using CoffeeTime.Services;
 using CoffeeTime.States;
@@ -39,9 +39,9 @@ public partial class MainWindowViewModel : ViewModelBase
         // ModuleButtons
         ModuleButtons =
         [
-            new ModuleButtonViewModel<PathWatcherViewModel>(
-                "Path Watcher",
-                "avares://CoffeeTime/Assets/PathWatcherIcon.png",
+            new ModuleButtonViewModel<PathWatchersViewModel>(
+                "Path Watchers",
+                "avares://CoffeeTime/Assets/PathWatchersIcon.png",
                 navigation),
             new ModuleButtonViewModel<SystemInfoViewModel>(
                 "System Info",

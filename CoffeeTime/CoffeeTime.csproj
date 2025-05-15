@@ -19,8 +19,8 @@
     <ItemGroup>
         <AvaloniaResource Include="Assets\**"/>
         <Folder Include="Models\" />
-        <Folder Include="Modules\PathWatcher\Interfaces\" />
-        <Folder Include="Modules\PathWatcher\Models\" />
+        <Folder Include="Modules\PathWatchers\Interfaces\" />
+        <Folder Include="Modules\PathWatchers\Models\" />
     </ItemGroup>
 
     <ItemGroup>
