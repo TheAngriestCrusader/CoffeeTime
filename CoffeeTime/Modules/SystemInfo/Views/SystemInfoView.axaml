@@ -29,30 +29,33 @@
                 <!-- System Properties -->
                 <Separator Margin="0 8"/>
 
-                <Grid ColumnDefinitions="Auto *" Margin="8 0">
-                    <!-- Keys -->
-                    <ItemsControl Grid.Column="0"
-                                  ItemsSource="{Binding SystemProperties}">
-                        <ItemsControl.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding Key}"/>
-                            </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                    </ItemsControl>
+                <ScrollViewer HorizontalScrollBarVisibility="Auto"
+                              Margin="12 0">
+                    <Grid ColumnDefinitions="Auto *" Margin="0 12">
+                        <!-- Keys -->
+                        <ItemsControl Grid.Column="0"
+                                      ItemsSource="{Binding SystemProperties}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Key}"/>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
 
-                    <!-- Values -->
-                    <ItemsControl Grid.Column="1"
-                                  ItemsSource="{Binding SystemProperties}">
-                        <ItemsControl.ItemTemplate>
-                            <DataTemplate>
-                                <TextBlock Text="{Binding Value}" Margin="16 0" />
-                            </DataTemplate>
-                        </ItemsControl.ItemTemplate>
-                    </ItemsControl>
-                </Grid>
+                        <!-- Values -->
+                        <ItemsControl Grid.Column="1"
+                                      ItemsSource="{Binding SystemProperties}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Value}" Margin="16 0" />
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </Grid>
+                </ScrollViewer>
                 
                 <!-- Drive Info -->
-                <Separator Margin="0 8"/>
+                <Separator Margin="0 0 0 8"/>
                 
                 <StackPanel HorizontalAlignment="Center">
                     <TextBlock Margin="8"
