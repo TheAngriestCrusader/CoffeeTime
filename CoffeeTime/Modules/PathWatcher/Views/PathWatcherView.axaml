@@ -7,20 +7,18 @@
              x:Class="CoffeeTime.Modules.PathWatcher.Views.PathWatcherView"
              x:DataType="vm:PathWatcherViewModel">
     <StackPanel>
-        <Border BorderBrush="{DynamicResource SystemAccentColor}"
-                BorderThickness="0 0 0 1">
-            <Grid ColumnDefinitions="* Auto">
-                <TextBox Grid.Column="0"
-                         Watermark="New path here..."
-                         Margin="4"/>
-                
-                <Button Grid.Column="1"
-                        Command="{Binding ConfigurePathWatcher}"
-                        Content="+"
-                        VerticalAlignment="Center"
-                        Margin="4"/>
-            </Grid>
-        </Border>
+        <Grid ColumnDefinitions="* Auto">
+            <TextBox Grid.Column="0"
+                     Text="{Binding NewPath, Mode=TwoWay}"
+                     Watermark="New path here..."
+                     Margin="4"/>
+            
+            <Button Grid.Column="1"
+                    Command="{Binding AddPathWatcher}"
+                    Content="+"
+                    VerticalAlignment="Center"
+                    Margin="4"/>
+        </Grid>
         
         <ScrollViewer>
             <ItemsControl ItemsSource="{Binding PathWatchers}">
