@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -13,6 +12,7 @@ public class SystemPollingService(SystemState system) : ISystemPollingService
     public async Task RefreshAsync()
     {
         system.RefreshHardwareInfo();
+        system.HardwareInfoIsLoaded += OnHardwareInfoLoaded;
         system.Hostname = Environment.MachineName;
         system.UserDomainName = Environment.UserDomainName;
         system.UserName = Environment.UserName;
@@ -37,5 +37,10 @@ public class SystemPollingService(SystemState system) : ISystemPollingService
                 TotalFreeSpace = drive.TotalFreeSpace
             });
         }
+    }
+    
+    private void OnHardwareInfoLoaded()
+    {
+        // Process advanced information here
     }
 }
